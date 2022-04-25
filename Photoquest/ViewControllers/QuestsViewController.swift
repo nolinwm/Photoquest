@@ -11,7 +11,7 @@ class QuestsViewController: UIViewController {
 
     @IBOutlet weak var questsTableView: UITableView!
     
-    var quests = ["Animals", "Flours", "Fruit", "Vegetables"]
+    var quests = TestData.quests
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class QuestsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? QuestDetailViewController {
             if let selectedIndexPath = selectedIndexPath {
-                detailVC.navigationItem.title = quests[selectedIndexPath.row]
+                detailVC.quest = quests[selectedIndexPath.row]
             }
         }
     }

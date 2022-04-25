@@ -17,14 +17,18 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var imageLabel: UILabel!
     
+    var quest: Quest?
+    var photoIndex = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         stylizeView()
         setupSwipeGestures()
-        resetImagePopAnimation()
+        animationFinished() // Call on load to prepare for next animation
     }
     
     private func stylizeView() {
+        navigationItem.title = quest?.name
         backImageView.layer.cornerRadius = 20
         middleImageView.layer.cornerRadius = 20
         frontImageView.layer.cornerRadius = 20
@@ -100,16 +104,26 @@ extension QuestDetailViewController {
     }
     
     private func animationFinished() {
-        cameraButton.isEnabled = true
-        imageLabel.alpha = 1
+        guard let quest = quest else { return }
         
-        /*
-         TODO: Update image view images to match new stack order
-         frontImageView to first in stack
-         middleImageView to second in stack
-         backImageView to first in stack
-        */
+        photoIndex += 1
+        if quest.photos.count <= photoIndex {
+            photoIndex = 0
+        }
         
-        resetImagePopAnimation()
+        var nextPhotoIndex = photoIndex + 1
+        if quest.photos.count <= nextPhotoIndex {
+            nextPhotoIndex = 0
+        }
+        
+        DispatchQueue.main.async {
+            self.imageLabel.text = quest.photos[self.photoIndex].name
+            self.frontImageView.image = quest.photos[self.photoIndex].image ?? UIImage(named: "imagePlaceholder")
+            self.middleImageView.image = quest.photos[nextPhotoIndex].image ?? UIImage(named: "imagePlaceholder")
+            self.backImageView.image = self.frontImageView.image
+            self.cameraButton.isEnabled = true
+            self.imageLabel.alpha = 1
+            self.resetImagePopAnimation()
+        }
     }
 }

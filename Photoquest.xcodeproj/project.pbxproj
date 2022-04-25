@@ -25,6 +25,9 @@
 		5CC70F852816338A0052733B /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F842816338A0052733B /* QuestsViewController.swift */; };
 		5CC9A0032816F3360011584E /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A0022816F3360011584E /* PhotoCollectionViewCell.swift */; };
 		5CC9A0052817270A0011584E /* ImageRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */; };
+		5CC9A00B2817334C0011584E /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00A2817334C0011584E /* Quest.swift */; };
+		5CC9A00D2817336D0011584E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
+		5CC9A00F281733860011584E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00E281733860011584E /* TestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		5CC70F842816338A0052733B /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
 		5CC9A0022816F3360011584E /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionViewController.swift; sourceTree = "<group>"; };
+		5CC9A00A2817334C0011584E /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
+		5CC9A00C2817336D0011584E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		5CC9A00E281733860011584E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,9 @@
 		5CC70F86281634AF0052733B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9A00A2817334C0011584E /* Quest.swift */,
+				5CC9A00C2817336D0011584E /* Photo.swift */,
+				5CC9A00E281733860011584E /* TestData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -222,7 +231,10 @@
 				5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */,
 				5C73CE212816C3E6002C096E /* QuestMapViewController.swift in Sources */,
 				5C73CE232816C401002C096E /* ProfileViewController.swift in Sources */,
+				5CC9A00B2817334C0011584E /* Quest.swift in Sources */,
+				5CC9A00F281733860011584E /* TestData.swift in Sources */,
 				5CC70F852816338A0052733B /* QuestsViewController.swift in Sources */,
+				5CC9A00D2817336D0011584E /* Photo.swift in Sources */,
 				5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */,
 				5C73CE1F2816C3AC002C096E /* OnboardingViewController.swift in Sources */,
 				5CC9A0032816F3360011584E /* PhotoCollectionViewCell.swift in Sources */,

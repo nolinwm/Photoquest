@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photoquest-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8e1-lO-COd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoquestIcon" translatesAutoresizingMaskIntoConstraints="NO" id="8e1-lO-COd">
                                 <rect key="frame" x="103.5" y="344.5" width="207" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8e1-lO-COd" secondAttribute="height" multiplier="1:1" id="ZTh-T4-8DL"/>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Photoquest-Logo" width="1024" height="1024"/>
+        <image name="photoquestIcon" width="1024" height="1024"/>
         <namedColor name="AccentColor">
             <color red="0.97647058823529409" green="0.92549019607843142" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

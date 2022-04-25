@@ -12,15 +12,15 @@ class QuestTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var progressButton: UIButton!
     
-    var quest: String?
+    var quest: Quest?
     
-    func load(for quest: String) {
+    func load(for quest: Quest) {
         nameLabel.text = nil
         progressButton.setTitle(nil, for: .normal)
+        progressButton.layer.cornerRadius = 10
         
         self.quest = quest
-        nameLabel.text = quest
-        progressButton.setTitle("0 / 10", for: .normal)
+        nameLabel.text = quest.name
+        progressButton.setTitle("\(quest.capturedPhotos.count) / \(quest.photos.count)", for: .normal)
     }
-
 }
