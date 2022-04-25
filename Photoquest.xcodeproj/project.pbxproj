@@ -13,6 +13,8 @@
 		5CC70F6E2815D25E0052733B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC70F6C2815D25E0052733B /* Main.storyboard */; };
 		5CC70F702815D2610052733B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC70F6F2815D2610052733B /* Assets.xcassets */; };
 		5CC70F732815D2610052733B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC70F712815D2610052733B /* LaunchScreen.storyboard */; };
+		5CC70F7D2815DE8F0052733B /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F7C2815DE8F0052733B /* Resnet50.mlmodel */; };
+		5CC70F8028160BAC0052733B /* ImageRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5CC70F6F2815D2610052733B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CC70F722815D2610052733B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CC70F742815D2610052733B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CC70F7C2815DE8F0052733B /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		5CC70F652815D25E0052733B /* Photoquest */ = {
 			isa = PBXGroup;
 			children = (
+				5CC70F7C2815DE8F0052733B /* Resnet50.mlmodel */,
+				5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */,
+				5CC70F6A2815D25E0052733B /* ViewController.swift */,
 				5CC70F662815D25E0052733B /* AppDelegate.swift */,
 				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
-				5CC70F6A2815D25E0052733B /* ViewController.swift */,
 				5CC70F6C2815D25E0052733B /* Main.storyboard */,
 				5CC70F6F2815D2610052733B /* Assets.xcassets */,
 				5CC70F712815D2610052733B /* LaunchScreen.storyboard */,
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC70F7D2815DE8F0052733B /* Resnet50.mlmodel in Sources */,
 				5CC70F6B2815D25E0052733B /* ViewController.swift in Sources */,
 				5CC70F672815D25E0052733B /* AppDelegate.swift in Sources */,
+				5CC70F8028160BAC0052733B /* ImageRecognizer.swift in Sources */,
 				5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
