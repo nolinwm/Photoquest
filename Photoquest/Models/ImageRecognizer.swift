@@ -10,7 +10,7 @@ import CoreML
 import Vision
 
 protocol ImageRecognizerDelegate {
-    func imageRecognizerDidFinish(image: UIImage, identifier: String, confidence: Int)
+    func imageRecognizerDidFinish(image: UIImage, identifiers: [String], confidence: Int)
 }
 
 struct ImageRecognizer {
@@ -23,7 +23,7 @@ struct ImageRecognizer {
             return
         }
         
-        guard let model = try? VNCoreMLModel(for: Resnet50(configuration: MLModelConfiguration()).model) else {
+        guard let model = try? VNCoreMLModel(for: SqueezeNet(configuration: MLModelConfiguration()).model) else {
             // TODO: Failed To Load Model Handling
             return
         }
@@ -33,16 +33,19 @@ struct ImageRecognizer {
                 // TODO: No Results Error Handling
                 return
             }
-            
             DispatchQueue.main.async {
-                let identifier = topResult.identifier.capitalized
+                let identifier = topResult.identifier.lowercased()
                 let confidence = Int(topResult.confidence * 100)
-                delegate?.imageRecognizerDidFinish(image: image, identifier: identifier, confidence: confidence)
+                delegate?.imageRecognizerDidFinish(
+                    image: image,
+                    identifiers: identifier.components(separatedBy: ", "),
+                    confidence: confidence
+                )
             }
         }
         
         let handler = VNImageRequestHandler(ciImage: ciImage)
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             do {
                 try handler.perform([request])
             } catch {

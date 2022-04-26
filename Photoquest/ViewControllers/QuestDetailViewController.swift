@@ -17,14 +17,18 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var imageLabel: UILabel!
     
+    let imagePicker = UIImagePickerController()
+    var capturedImage: UIImage?
+    
     var quest: Quest?
-    var photoIndex = -1
+    var photoIndex = -1 // Starts at -1 and increments to 0 in viewDidLoad's imagePopAnimationFinished() call
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylizeView()
+        setupImagePicker()
         setupSwipeGestures()
-        animationFinished() // Call on load to prepare for next animation
+        imagePopAnimationFinished() // Call on load to prepare for next animation
     }
     
     private func stylizeView() {
@@ -47,6 +51,18 @@ class QuestDetailViewController: UIViewController {
     @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
         animateImagePop(direction: sender.direction, duration: 0.425)
     }
+    
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        present(imagePicker, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ImageRecognitionViewController {
+            vc.photo = quest?.photos[photoIndex]
+            vc.capturedImage = self.capturedImage
+            vc.delegate = self
+        }
+    }
 }
 
 // MARK: - Image Pop Animation Methods
@@ -54,7 +70,7 @@ extension QuestDetailViewController {
     
     private func animateImagePop(direction: UISwipeGestureRecognizer.Direction, duration: Double) {
         let directionModifier: CGFloat = (direction == .left) ? -1 : 1
-        animationStarted()
+        imagePopAnimationStarted()
         
         // Move backImageView off screen in direction of swipe
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -87,7 +103,7 @@ extension QuestDetailViewController {
                     CGAffineTransform(translationX: frontTranslation.x, y: frontTranslation.y)
                 )
         } completion: { complete in
-            self.animationFinished()
+            self.imagePopAnimationFinished()
         }
     }
     
@@ -97,13 +113,13 @@ extension QuestDetailViewController {
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
     }
     
-    private func animationStarted() {
+    private func imagePopAnimationStarted() {
         cameraButton.isEnabled = false
         imageLabel.alpha = .zero
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
     
-    private func animationFinished() {
+    private func imagePopAnimationFinished() {
         guard let quest = quest else { return }
         
         photoIndex += 1
@@ -124,6 +140,39 @@ extension QuestDetailViewController {
             self.cameraButton.isEnabled = true
             self.imageLabel.alpha = 1
             self.resetImagePopAnimation()
+        }
+    }
+}
+
+// MARK: - UIImagePickerController Methods
+extension QuestDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func setupImagePicker() {
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        capturedImage = info[.originalImage] as? UIImage
+        picker.dismiss(animated: true)
+        performSegue(withIdentifier: "segueToImageRecognition", sender: self)
+    }
+}
+
+// MARK: - ImageRecognitionViewControllerDelegate Methods
+extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
+    
+    func imageRecognitionViewControllerDidDismiss(imageWasAccepted: Bool, recaptureRequested: Bool) {
+        if recaptureRequested {
+            present(imagePicker, animated: true)
+            return
+        }
+        if imageWasAccepted, let capturedImage = capturedImage {
+            quest?.photos[photoIndex].image = capturedImage
+            quest?.photos[photoIndex].capturedDate = Date.now
+            frontImageView.image = capturedImage
+            backImageView.image = frontImageView.image
         }
     }
 }

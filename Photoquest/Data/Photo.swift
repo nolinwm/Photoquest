@@ -11,6 +11,6 @@ import UIKit
 struct Photo {
     let name: String
     let acceptedIdentifiers: [String]
-    let image: UIImage?
-    let capturedDate: Date?
+    var image: UIImage?
+    var capturedDate: Date?
 }

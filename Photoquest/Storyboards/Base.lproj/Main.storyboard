@@ -291,11 +291,11 @@
                                     <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oc-IO-TZ2"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyImage" translatesAutoresizingMaskIntoConstraints="NO" id="THB-mE-Q9B">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="THB-mE-Q9B">
                                 <rect key="frame" x="41.5" y="178" width="331" height="505"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyImage" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-yF-DYS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-yF-DYS">
                                 <rect key="frame" x="41.5" y="178" width="331" height="505"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </imageView>
@@ -590,7 +590,6 @@
     </scenes>
     <color key="tintColor" name="CustomTint"/>
     <resources>
-        <image name="EmptyImage" width="4267" height="4267"/>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="camera" catalog="system" width="128" height="94"/>

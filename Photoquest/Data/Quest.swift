@@ -9,7 +9,7 @@ import Foundation
 
 struct Quest {
     let name: String
-    let photos: [Photo]
+    var photos: [Photo]
     var capturedPhotos: [Photo] {
         return photos.filter {
             $0.image != nil && $0.capturedDate != nil
