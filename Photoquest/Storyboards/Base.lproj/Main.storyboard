@@ -607,7 +607,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="13"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="showPasswordTapped:" destination="Qrx-Wj-zhk" eventType="touchUpInside" id="F77-eJ-OnR"/>
+                                                            <action selector="showPasswordButtonTapped:" destination="Qrx-Wj-zhk" eventType="touchUpInside" id="LRO-dn-V14"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

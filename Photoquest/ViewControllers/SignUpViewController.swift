@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
         presentPage(firstPage: true, animated: false)
     }
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
         setActionLoading(true)
         guard InputValidationService.validateEmail(email: emailTextField.text) else {
             updateStatus(emailStatusIcon, emailErrorLabel, status: .error, error: "Email address is not valid.")
@@ -55,11 +55,11 @@ class SignUpViewController: UIViewController {
         presentPage(firstPage: false)
     }
     
-    @IBAction func backButtonTapped(_ sender: Any) {
+    @IBAction func backButtonTapped(_ sender: UIButton) {
         presentPage(firstPage: true)
     }
     
-    @IBAction func doneButtonTapped(_ sender: Any) {
+    @IBAction func doneButtonTapped(_ sender: UIButton) {
         setActionLoading(true)
         guard InputValidationService.validatePassword(password: passwordTextField.text) else {
             updateStatus(passwordStatusIcon, passwordErrorLabel, status: .error, error: "Password must be at least 12 characters.")
@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController {
         performSegue(withIdentifier: "segueToOnboarding", sender: self)
     }
     
-    @IBAction func showPasswordButtonTapped(_ sender: Any) {
+    @IBAction func showPasswordButtonTapped(_ sender: UIButton) {
         passwordHidden.toggle()
         showPasswordButton.setImage(
             UIImage(systemName: passwordHidden ? "eye.fill" : "eye.slash"),
