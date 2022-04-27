@@ -1,0 +1,16 @@
+on: pull_request
+
+jobs:
+  swift-format-lint:
+    runs-on : macos-latest
+    name: Swift Format Lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Swift Format Lint
+        uses: Iron-Ham/swift-format-linter-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Optional parameters. Note that these are formatted as JSON array strings
+          # excludes: '["Generated/", "Pods/"]'
+          # exclude-types: '[".graphql.swift"]'
