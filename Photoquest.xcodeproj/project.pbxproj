@@ -16,6 +16,7 @@
 		5C73CE212816C3E6002C096E /* QuestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE202816C3E6002C096E /* QuestMapViewController.swift */; };
 		5C73CE232816C401002C096E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE222816C401002C096E /* ProfileViewController.swift */; };
 		5C73CE2C2816E6F6002C096E /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE2B2816E6F6002C096E /* QuestTableViewCell.swift */; };
+		5C7906C6281983FD00B2E450 /* InputValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7906C5281983FD00B2E450 /* InputValidationService.swift */; };
 		5CC70F672815D25E0052733B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F662815D25E0052733B /* AppDelegate.swift */; };
 		5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F682815D25E0052733B /* SceneDelegate.swift */; };
 		5CC70F6B2815D25E0052733B /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F6A2815D25E0052733B /* QuestDetailViewController.swift */; };
@@ -41,6 +42,7 @@
 		5C73CE202816C3E6002C096E /* QuestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestMapViewController.swift; sourceTree = "<group>"; };
 		5C73CE222816C401002C096E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5C73CE2B2816E6F6002C096E /* QuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
+		5C7906C5281983FD00B2E450 /* InputValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidationService.swift; sourceTree = "<group>"; };
 		5CC70F632815D25E0052733B /* Photoquest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photoquest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC70F662815D25E0052733B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CC70F682815D25E0052733B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				5C54F41528186957001847F7 /* StringExtension.swift */,
+				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */,
 				5C73CE1F2816C3AC002C096E /* OnboardingViewController.swift in Sources */,
 				5CC9A0032816F3360011584E /* PhotoCollectionViewCell.swift in Sources */,
+				5C7906C6281983FD00B2E450 /* InputValidationService.swift in Sources */,
 				5CC70F8028160BAC0052733B /* ImageRecognizer.swift in Sources */,
 				5C54F41628186957001847F7 /* StringExtension.swift in Sources */,
 				5CC9A0052817270A0011584E /* ImageRecognitionViewController.swift in Sources */,
