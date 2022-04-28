@@ -106,7 +106,6 @@ extension QuestDetailViewController {
         
         animateNextPhotoPresentation(duration: 0.425) { complete in
             self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
-            self.imageLabel.text = quest.photos[self.photoIndex].name
             self.resetAnimationState()
             self.setActionLoading(false)
         }
@@ -121,7 +120,6 @@ extension QuestDetailViewController {
         
         animatePreviousPhotoPresentation(duration: 0.425) { complete in
             self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
-            self.imageLabel.text = quest.photos[self.photoIndex].name
             self.resetAnimationState()
             self.setActionLoading(false)
         }
@@ -134,7 +132,26 @@ extension QuestDetailViewController {
         overImageView.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
     }
     
+    func animateAndUpdateLabel(duration: Double) {
+        // Slide imageLabel down
+        UIView.animate(withDuration: duration * 0.3, delay: 0, options: .curveEaseIn) {
+            self.imageLabel.transform = CGAffineTransform(translationX: 0, y: 100)
+        } completion: { complete in
+            if let quest = self.quest {
+                self.imageLabel.text = quest.photos[self.photoIndex].name
+            }
+        }
+        
+        // Slide imageLabel back to original position
+        UIView.animate(withDuration: duration * 0.6, delay: duration * 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 4, options: .curveEaseOut) {
+            self.imageLabel.transform = .identity
+        }
+    }
+    
     func animateNextPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
+        
+        animateAndUpdateLabel(duration: duration)
+        
         // Move backImageView off screen to the left
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             .concatenating(
@@ -170,6 +187,9 @@ extension QuestDetailViewController {
     }
     
     func animatePreviousPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
+        
+        animateAndUpdateLabel(duration: duration)
+        
         // Move overImageView off screen to the right and slightly down
         overImageView.transform = CGAffineTransform(translationX: view.frame.width * 2, y: 50)
         
@@ -204,11 +224,9 @@ extension QuestDetailViewController {
     private func setActionLoading(_ loading: Bool) {
         if loading {
             cameraButton.isEnabled = false
-            imageLabel.alpha = .zero
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } else {
             cameraButton.isEnabled = true
-            imageLabel.alpha = 1
         }
     }
     
