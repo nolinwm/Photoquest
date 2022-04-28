@@ -137,7 +137,7 @@ extension ImageRecognitionViewController: ImageRecognizerDelegate {
         if imageWasAccepted {
             label.text = "Great photo! Your collection has been updated."
         } else {
-            label.text = "This photo does not appear to be \(photo.name.indefiniteArticle) \(photo.name). Please try again."
+            label.text = "This photo does not appear to be \(photo.indefiniteArticleOverride ?? photo.indefiniteArticle)\(photo.name). Please try again."
         }
         
         recaptureButton.isHidden = imageWasAccepted ? true : false

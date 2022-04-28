@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C54F41628186957001847F7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F41528186957001847F7 /* StringExtension.swift */; };
 		5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
@@ -33,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C54F41528186957001847F7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		5C73CE182816C370002C096E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		5C73CE1A2816C38A002C096E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		5C54F4142818694A001847F7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5C54F41528186957001847F7 /* StringExtension.swift */,
 				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
 			);
 			path = Helper;
@@ -254,7 +251,6 @@
 				5CC9A0032816F3360011584E /* PhotoCollectionViewCell.swift in Sources */,
 				5C7906C6281983FD00B2E450 /* InputValidationService.swift in Sources */,
 				5CC70F8028160BAC0052733B /* ImageRecognizer.swift in Sources */,
-				5C54F41628186957001847F7 /* StringExtension.swift in Sources */,
 				5CC9A0052817270A0011584E /* ImageRecognitionViewController.swift in Sources */,
 				5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */,
 			);

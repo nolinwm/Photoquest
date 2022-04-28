@@ -15,12 +15,12 @@ struct TestData {
     static let orangePhoto = Photo(name: "Orange", acceptedIdentifiers: [], image: nil, capturedDate: nil)
     static let grapesPhoto = Photo(name: "Grapes", acceptedIdentifiers: [], image: UIImage(named: "grapes"), capturedDate: Date.now)
     static let raspberryPhoto = Photo(name: "Raspberry", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let blackberryPhoto = Photo(name: "Blackberry", acceptedIdentifiers: [], image: nil, capturedDate: nil)
+    static let blueberriesPhoto = Photo(name: "Blueberries", acceptedIdentifiers: [], image: nil, capturedDate: nil)
     static let kiwiPhoto = Photo(name: "Kiwi", acceptedIdentifiers: [], image: nil, capturedDate: nil)
     static let watermelonPhoto = Photo(name: "Watermelon", acceptedIdentifiers: [], image: UIImage(named: "watermelon"), capturedDate: Date.now - 864_000)
     static let pineapplePhoto = Photo(name: "Pineapple", acceptedIdentifiers: [], image: nil, capturedDate: nil)
     
-    static let fruitQuest = Quest(name: "Fruit", photos: [bananaPhoto, applePhoto, strawberryPhoto, orangePhoto, grapesPhoto, raspberryPhoto, blackberryPhoto, kiwiPhoto, watermelonPhoto, pineapplePhoto])
+    static let fruitQuest = Quest(name: "Fruit", photos: [bananaPhoto, applePhoto, strawberryPhoto, orangePhoto, grapesPhoto, raspberryPhoto, blueberriesPhoto, kiwiPhoto, watermelonPhoto, pineapplePhoto])
     
     static let quests = [fruitQuest]
 }
