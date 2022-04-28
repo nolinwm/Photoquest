@@ -81,11 +81,11 @@ extension ImageRecognitionViewController {
             self.dimView.alpha = 0.75
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3, options: .curveEaseOut) {
             self.containerView.transform = .identity
         }
         
-        UIView.animate(withDuration: 0.55, delay: 0.125, usingSpringWithDamping: 0.75, initialSpringVelocity: 4, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.5, delay: 0.125, usingSpringWithDamping: 0.75, initialSpringVelocity: 4, options: .curveEaseOut) {
             self.imageView.transform = .identity
         }
     }
@@ -95,11 +95,11 @@ extension ImageRecognitionViewController {
             self.dimView.alpha = 0
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut) {
             self.containerView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0.075, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.35, delay: 0.075, options: .curveEaseOut) {
             self.imageView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
         } completion: { complete in
             self.dismiss(animated: false)
