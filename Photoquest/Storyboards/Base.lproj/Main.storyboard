@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JvD-hO-yps">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="E1c-cr-JSd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -100,24 +100,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge4-Uk-q0k">
-                                <rect key="frame" x="167" y="432.5" width="80" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign Out"/>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htf-vh-RyI">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kU1-4S-WOJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpz-Xs-Zfn">
+                                                <rect key="frame" x="52" y="20" width="310.5" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="NaS-EH-Z1C"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="rectangle.portrait.and.arrow.right" catalog="system" title="Sign out" imagePadding="5">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="signOutTapped:" destination="vCs-29-uJp" eventType="touchUpInside" id="1Gl-LF-nqb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Cpz-Xs-Zfn" secondAttribute="bottom" constant="20" id="0bs-3v-Kkg"/>
+                                            <constraint firstItem="Cpz-Xs-Zfn" firstAttribute="top" secondItem="kU1-4S-WOJ" secondAttribute="top" constant="20" id="6OW-2m-MxZ"/>
+                                            <constraint firstItem="Cpz-Xs-Zfn" firstAttribute="centerX" secondItem="kU1-4S-WOJ" secondAttribute="centerX" id="jKw-87-s4F"/>
+                                            <constraint firstItem="Cpz-Xs-Zfn" firstAttribute="width" secondItem="kU1-4S-WOJ" secondAttribute="width" multiplier="0.75" id="mPL-jv-xoB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kU1-4S-WOJ" secondAttribute="bottom" id="5wj-Yo-ARZ"/>
+                                    <constraint firstItem="kU1-4S-WOJ" firstAttribute="top" secondItem="htf-vh-RyI" secondAttribute="top" id="RmY-cn-xJC"/>
+                                    <constraint firstItem="kU1-4S-WOJ" firstAttribute="width" secondItem="htf-vh-RyI" secondAttribute="width" id="Rou-Bt-eM8"/>
+                                    <constraint firstItem="kU1-4S-WOJ" firstAttribute="leading" secondItem="htf-vh-RyI" secondAttribute="leading" id="cuX-O9-tQ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="kU1-4S-WOJ" secondAttribute="trailing" id="myu-he-PSP"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YW2-NX-Kiu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ge4-Uk-q0k" firstAttribute="centerY" secondItem="TAv-tL-JFR" secondAttribute="centerY" id="0Ym-Z1-ByI"/>
-                            <constraint firstItem="ge4-Uk-q0k" firstAttribute="centerX" secondItem="TAv-tL-JFR" secondAttribute="centerX" id="3bj-T4-ret"/>
+                            <constraint firstItem="htf-vh-RyI" firstAttribute="top" secondItem="YW2-NX-Kiu" secondAttribute="top" id="7io-S2-UTe"/>
+                            <constraint firstItem="YW2-NX-Kiu" firstAttribute="bottom" secondItem="htf-vh-RyI" secondAttribute="bottom" id="bIK-HB-eXM"/>
+                            <constraint firstItem="htf-vh-RyI" firstAttribute="leading" secondItem="YW2-NX-Kiu" secondAttribute="leading" id="bNT-P5-xpw"/>
+                            <constraint firstItem="YW2-NX-Kiu" firstAttribute="trailing" secondItem="htf-vh-RyI" secondAttribute="trailing" id="e1H-81-IhT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="rZr-MC-Gcv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZu-U9-Bl6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="828"/>
+            <point key="canvasLocation" x="1086.9565217391305" y="827.67857142857144"/>
         </scene>
         <!--Image Recognition View Controller-->
         <scene sceneID="ozO-ss-FN1">
@@ -176,21 +213,6 @@
                                                     <action selector="retakeButtonTapped:" destination="gxT-pF-sid" eventType="touchUpInside" id="IN0-HY-5GC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-4D-P5D">
-                                                <rect key="frame" x="0.0" y="0.0" width="310.5" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="AT6-q6-Y9q"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                    <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="cancelButtonTapped:" destination="gxT-pF-sid" eventType="touchUpInside" id="Hf6-cU-XDM"/>
-                                                </connections>
-                                            </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9V-aj-kfJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="310.5" height="50"/>
                                                 <constraints>
@@ -205,6 +227,21 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="doneButtonTaped:" destination="gxT-pF-sid" eventType="touchUpInside" id="Q3u-4W-ntU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-4D-P5D">
+                                                <rect key="frame" x="0.0" y="0.0" width="310.5" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="AT6-q6-Y9q"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="gxT-pF-sid" eventType="touchUpInside" id="Hf6-cU-XDM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -491,6 +528,22 @@
                         </constraints>
                     </view>
                 </viewController>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-bm-yh2" userLabel="Divider">
+                    <rect key="frame" x="0.0" y="0.0" width="310.5" height="2"/>
+                    <viewLayoutGuide key="safeArea" id="Y3U-wg-QSE"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="Rwd-GL-Mjw"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEO-ev-eVY" userLabel="Divider">
+                    <rect key="frame" x="0.0" y="0.0" width="310.5" height="2"/>
+                    <viewLayoutGuide key="safeArea" id="zti-Hd-Mxx"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="SGF-6Y-Mqg"/>
+                    </constraints>
+                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nV5-5E-uFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3725" y="461"/>
@@ -1045,6 +1098,7 @@
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="100"/>
         <image name="photoquestTemplateIcon" width="1024" height="1024"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="tabItemHighlight" width="50" height="50"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
