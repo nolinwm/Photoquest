@@ -33,7 +33,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var showPasswordButton: UIButton!
     var passwordHidden = true
     
-    enum StatusType {
+    enum TextFieldStatusType {
         case none
         case error
         case success
@@ -221,7 +221,7 @@ extension SignUpViewController: UITextFieldDelegate {
         }
     }
     
-    func updateStatus(_ icon: UIImageView, _ label: UILabel, status: StatusType, error: String? = nil) {
+    func updateStatus(_ icon: UIImageView, _ label: UILabel, status: TextFieldStatusType, error: String? = nil) {
         switch status {
         case .none:
             icon.isHidden = true
