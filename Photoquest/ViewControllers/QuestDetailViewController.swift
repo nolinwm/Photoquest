@@ -14,21 +14,25 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var middleImageView: UIImageView!
     @IBOutlet weak var frontImageView: UIImageView!
+    @IBOutlet weak var overImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var imageLabel: UILabel!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     let imagePicker = UIImagePickerController()
     var capturedImage: UIImage?
     
     var quest: Quest?
-    var photoIndex = -1 // Starts at -1 and increments to 0 in viewDidLoad's imagePopAnimationFinished() call
+    var photoIndex = 0
+    
+    let imagePlaceholder = UIImage(named: "imagePlaceholder")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylizeView()
         setupImagePicker()
         setupSwipeGestures()
-        imagePopAnimationFinished() // Call on load to prepare for next animation
+        setupImageViews()
     }
     
     private func stylizeView() {
@@ -36,6 +40,7 @@ class QuestDetailViewController: UIViewController {
         backImageView.layer.cornerRadius = 20
         middleImageView.layer.cornerRadius = 20
         frontImageView.layer.cornerRadius = 20
+        overImageView.layer.cornerRadius = 20
     }
     
     private func setupSwipeGestures() {
@@ -49,7 +54,18 @@ class QuestDetailViewController: UIViewController {
     }
     
     @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        animateImagePop(direction: sender.direction, duration: 0.425)
+        switch sender.direction {
+        case .left:
+            presentNextPhoto()
+        case .right:
+            presentPreviousPhoto()
+        default:
+            break
+        }
+    }
+    
+    @IBAction func pageControlTapped(_ sender: Any) {
+        presentNextPhoto(setIndexTo: pageControl.currentPage)
     }
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
@@ -65,82 +81,146 @@ class QuestDetailViewController: UIViewController {
     }
 }
 
-// MARK: - Image Pop Animation Methods
+// MARK: - Animation Methods
 extension QuestDetailViewController {
     
-    private func animateImagePop(direction: UISwipeGestureRecognizer.Direction, duration: Double) {
-        let directionModifier: CGFloat = (direction == .left) ? -1 : 1
-        imagePopAnimationStarted()
+    func setupImageViews() {
+        guard let quest = quest else { return }
+        pageControl.numberOfPages = quest.photos.count
+        adjustPhotoIndex(to: photoIndex) // Ensures photoIndex is in bounds
+        resetAnimationState()
+        frontImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        imageLabel.text = quest.photos[photoIndex].name
+    }
+    
+    func presentNextPhoto(setIndexTo: Int? = nil) {
+        guard let quest = quest else { return }
+        setActionLoading(true)
+        backImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        if let setIndexTo = setIndexTo {
+            adjustPhotoIndex(to: setIndexTo)
+        } else {
+            adjustPhotoIndex(by: 1)
+        }
+        middleImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
         
-        // Move backImageView off screen in direction of swipe
+        animateNextPhotoPresentation(duration: 0.425) { complete in
+            self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
+            self.imageLabel.text = quest.photos[self.photoIndex].name
+            self.resetAnimationState()
+            self.setActionLoading(false)
+        }
+    }
+    
+    func presentPreviousPhoto() {
+        guard let quest = quest else { return }
+        setActionLoading(true)
+        adjustPhotoIndex(by: -1)
+        backImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        overImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        
+        animatePreviousPhotoPresentation(duration: 0.425) { complete in
+            self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
+            self.imageLabel.text = quest.photos[self.photoIndex].name
+            self.resetAnimationState()
+            self.setActionLoading(false)
+        }
+    }
+    
+    func resetAnimationState() {
+        frontImageView.transform = .identity
+        middleImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        overImageView.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
+    }
+    
+    func animateNextPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
+        // Move backImageView off screen to the left
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             .concatenating(
-                CGAffineTransform(translationX: view.frame.width * directionModifier, y: 0)
+                CGAffineTransform(translationX: -view.frame.width, y: 0)
             )
-        
-        // Scale middleImageView up to full size
-        UIView.animate(withDuration: duration * 0.75, delay: duration * 0.1) {
-            self.middleImageView.transform = .identity
-        }
         
         // Slide backImageView to center of screen
         UIView.animate(withDuration: duration * 0.75, delay: duration * 0.25) {
             self.backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }
         
+        // Scale middleImageView up to full size
+        UIView.animate(withDuration: duration * 0.75, delay: duration * 0.1) {
+            self.middleImageView.transform = .identity
+        }
+        
         /*
          Slide and rotate frontImageView off screen in direction of swipe
-         Call animationFinished on completion as this animation takes the full duration
+         Call completionHandler on completion as this animation takes the full duration
         */
         let frontTranslation = CGPoint(
-            x: view.frame.width * 2 * directionModifier,
+            x: view.frame.width * -2,
             y: view.frame.height
         )
-        let frontRotation: CGFloat = .pi / 3 * directionModifier
         UIView.animate(withDuration: duration, delay: 0) {
-            self.frontImageView.transform = CGAffineTransform(rotationAngle: frontRotation)
+            self.frontImageView.transform = CGAffineTransform(rotationAngle: .pi / -3)
                 .concatenating(
                     CGAffineTransform(translationX: frontTranslation.x, y: frontTranslation.y)
                 )
         } completion: { complete in
-            self.imagePopAnimationFinished()
+            completionHandler(complete)
         }
     }
     
-    private func resetImagePopAnimation() {
-        frontImageView.transform = .identity
-        middleImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-    }
-    
-    private func imagePopAnimationStarted() {
-        cameraButton.isEnabled = false
-        imageLabel.alpha = .zero
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-    }
-    
-    private func imagePopAnimationFinished() {
-        guard let quest = quest else { return }
+    func animatePreviousPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
+        // Move overImageView off screen to the right and slightly down
+        overImageView.transform = CGAffineTransform(translationX: view.frame.width * 2, y: 50)
         
-        photoIndex += 1
-        if quest.photos.count <= photoIndex {
+        // Scale front and middleImageView's down
+        UIView.animate(withDuration: duration * 0.35, delay: duration * 0.35) {
+            self.frontImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.middleImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+        
+        // Slide backImageView off screen to the right
+        UIView.animate(withDuration: duration * 0.5, delay: 0) {
+            self.backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                .concatenating(
+                    CGAffineTransform(translationX: self.view.frame.width * 2, y: 0)
+                )
+                .concatenating(
+                    CGAffineTransform(rotationAngle: .pi / 8)
+                )
+        }
+        
+        /*
+         Slide overImageView to center of screen
+         Call completionHandler on completion as this animation takes the full duration
+         */
+        UIView.animate(withDuration: duration * 0.65, delay: duration * 0.35) {
+            self.overImageView.transform = .identity
+        } completion: { complete in
+            completionHandler(complete)
+        }
+    }
+    
+    private func setActionLoading(_ loading: Bool) {
+        if loading {
+            cameraButton.isEnabled = false
+            imageLabel.alpha = .zero
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        } else {
+            cameraButton.isEnabled = true
+            imageLabel.alpha = 1
+        }
+    }
+    
+    func adjustPhotoIndex(by increment: Int? = nil, to hardValue: Int? = nil) {
+        guard let quest = quest else { return }
+        photoIndex = hardValue ?? photoIndex + (increment ?? 1)
+        if photoIndex < 0 {
+            photoIndex = quest.photos.count - 1
+        } else if photoIndex >= quest.photos.count {
             photoIndex = 0
         }
-        
-        var nextPhotoIndex = photoIndex + 1
-        if quest.photos.count <= nextPhotoIndex {
-            nextPhotoIndex = 0
-        }
-        
-        DispatchQueue.main.async {
-            self.imageLabel.text = quest.photos[self.photoIndex].name
-            self.frontImageView.image = quest.photos[self.photoIndex].image ?? UIImage(named: "imagePlaceholder")
-            self.middleImageView.image = quest.photos[nextPhotoIndex].image ?? UIImage(named: "imagePlaceholder")
-            self.backImageView.image = self.frontImageView.image
-            self.cameraButton.isEnabled = true
-            self.imageLabel.alpha = 1
-            self.resetImagePopAnimation()
-        }
+        pageControl.currentPage = photoIndex
     }
 }
 
