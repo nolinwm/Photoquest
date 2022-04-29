@@ -4,6 +4,8 @@
 <dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Photoquest uses the camera to take pictures to complete quests.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Photoquest uses your location to tag where your pictures were taken.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
