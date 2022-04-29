@@ -26,10 +26,21 @@ struct Photo {
      If these rules don't apply to the name of the photo, provide the correct indefinite article in the indefiniteArticleOverride variable.
      */
     var indefiniteArticle: String {
+        if let override = indefiniteArticleOverride { return override }
         let lowercased = name.lowercased()
         if lowercased.hasSuffix("s") { return ""}
         if ("aeiou").contains(lowercased.prefix(1)) { return "an " }
         return "a "
     }
-    let indefiniteArticleOverride: String? = nil
+    let indefiniteArticleOverride: String?
+    
+    init(id: String, name: String, acceptedIdentifiers: [String], image: UIImage? = nil, capturedDate: Date? = nil, coordinate: CLLocationCoordinate2D? = nil, indefiniteArticleOverride: String? = nil) {
+        self.id = id
+        self.name = name
+        self.acceptedIdentifiers = acceptedIdentifiers
+        self.image = image
+        self.capturedDate = capturedDate
+        self.coordinate = coordinate
+        self.indefiniteArticleOverride = indefiniteArticleOverride
+    }
 }

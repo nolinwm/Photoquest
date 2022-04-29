@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C4671CE281C239100D9E89E /* MapAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */; };
 		5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
+		5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
 		5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
@@ -32,9 +33,21 @@
 		5CC9A00F281733860011584E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00E281733860011584E /* TestData.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5C56EA61281C74C60069AE92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CC70F5B2815D25E0052733B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CC70F622815D25E0052733B;
+			remoteInfo = Photoquest;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewController.swift; sourceTree = "<group>"; };
 		5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
+		5C56EA5D281C74C60069AE92 /* PhotoquestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoquestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoquestTests.swift; sourceTree = "<group>"; };
 		5C73CE182816C370002C096E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		5C73CE1A2816C38A002C096E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		5C73CE1C2816C398002C096E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +74,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5C56EA5A281C74C60069AE92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5CC70F602815D25E0052733B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,6 +99,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		5C56EA5E281C74C60069AE92 /* PhotoquestTests */ = {
+			isa = PBXGroup;
+			children = (
+				5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */,
+			);
+			path = PhotoquestTests;
+			sourceTree = "<group>";
+		};
 		5C73CE2A2816E6DF002C096E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				5CC70F652815D25E0052733B /* Photoquest */,
+				5C56EA5E281C74C60069AE92 /* PhotoquestTests */,
 				5CC70F642815D25E0052733B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				5CC70F632815D25E0052733B /* Photoquest.app */,
+				5C56EA5D281C74C60069AE92 /* PhotoquestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +199,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5C56EA5C281C74C60069AE92 /* PhotoquestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C56EA65281C74C60069AE92 /* Build configuration list for PBXNativeTarget "PhotoquestTests" */;
+			buildPhases = (
+				5C56EA59281C74C60069AE92 /* Sources */,
+				5C56EA5A281C74C60069AE92 /* Frameworks */,
+				5C56EA5B281C74C60069AE92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C56EA62281C74C60069AE92 /* PBXTargetDependency */,
+			);
+			name = PhotoquestTests;
+			productName = PhotoquestTests;
+			productReference = 5C56EA5D281C74C60069AE92 /* PhotoquestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5CC70F622815D25E0052733B /* Photoquest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CC70F772815D2610052733B /* Build configuration list for PBXNativeTarget "Photoquest" */;
@@ -196,6 +244,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					5C56EA5C281C74C60069AE92 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 5CC70F622815D25E0052733B;
+					};
 					5CC70F622815D25E0052733B = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -215,11 +267,19 @@
 			projectRoot = "";
 			targets = (
 				5CC70F622815D25E0052733B /* Photoquest */,
+				5C56EA5C281C74C60069AE92 /* PhotoquestTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5C56EA5B281C74C60069AE92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5CC70F612815D25E0052733B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +293,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5C56EA59281C74C60069AE92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5CC70F5F2815D25E0052733B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +330,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5C56EA62281C74C60069AE92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CC70F622815D25E0052733B /* Photoquest */;
+			targetProxy = 5C56EA61281C74C60069AE92 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5CC70F6C2815D25E0052733B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -282,6 +358,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5C56EA63281C74C60069AE92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7927LZ58S8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nolinmcfarland.PhotoquestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photoquest.app/Photoquest";
+			};
+			name = Debug;
+		};
+		5C56EA64281C74C60069AE92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7927LZ58S8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nolinmcfarland.PhotoquestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photoquest.app/Photoquest";
+			};
+			name = Release;
+		};
 		5CC70F752815D2610052733B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -455,6 +567,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5C56EA65281C74C60069AE92 /* Build configuration list for PBXNativeTarget "PhotoquestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C56EA63281C74C60069AE92 /* Debug */,
+				5C56EA64281C74C60069AE92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5CC70F5E2815D25E0052733B /* Build configuration list for PBXProject "Photoquest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
