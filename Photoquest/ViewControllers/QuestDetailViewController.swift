@@ -8,6 +8,7 @@
 import UIKit
 import CoreML
 import Vision
+import CoreLocation
 
 class QuestDetailViewController: UIViewController {
     
@@ -17,18 +18,21 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var overImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var imageLabel: UILabel!
-    
     @IBOutlet weak var pageControl: UIPageControl!
+    
     let imagePicker = UIImagePickerController()
+    let imagePlaceholder = UIImage(named: "imagePlaceholder")
     var capturedImage: UIImage?
     
     var quest: Quest?
     var photoIndex = 0
     
-    let imagePlaceholder = UIImage(named: "imagePlaceholder")
+    let locationManager = CLLocationManager()
+    var photoIndexToTagLocation = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
         stylizeView()
         setupImagePicker()
         setupSwipeGestures()
@@ -73,10 +77,12 @@ class QuestDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ImageRecognitionViewController {
-            vc.photo = quest?.photos[photoIndex]
-            vc.capturedImage = self.capturedImage
-            vc.delegate = self
+        if let irVC = segue.destination as? ImageRecognitionViewController {
+            irVC.photo = quest?.photos[photoIndex]
+            irVC.capturedImage = self.capturedImage
+            irVC.delegate = self
+        } else if let mapVC = segue.destination as? QuestMapViewController {
+            mapVC.quest = quest
         }
     }
 }
@@ -267,10 +273,34 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
             return
         }
         if imageWasAccepted, let capturedImage = capturedImage {
+            DispatchQueue.main.async {
+                self.frontImageView.image = capturedImage
+                self.backImageView.image = self.frontImageView.image
+            }
             quest?.photos[photoIndex].image = capturedImage
             quest?.photos[photoIndex].capturedDate = Date.now
-            frontImageView.image = capturedImage
-            backImageView.image = frontImageView.image
+            tagPhotoLocation()
         }
+    }
+}
+
+// MARK: - CoreLocation Methods
+extension QuestDetailViewController: CLLocationManagerDelegate {
+    
+    func tagPhotoLocation() {
+        photoIndexToTagLocation = photoIndex
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            quest?.photos[photoIndexToTagLocation].coordinate = location.coordinate
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // TODO: Location Manager Error Handling
+        print(error.localizedDescription)
     }
 }

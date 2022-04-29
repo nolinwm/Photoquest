@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4671CE281C239100D9E89E /* MapAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */; };
 		5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewController.swift; sourceTree = "<group>"; };
 		5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		5C73CE182816C370002C096E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		5C73CE1A2816C38A002C096E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				5C73CE202816C3E6002C096E /* QuestMapViewController.swift */,
 				5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */,
 				5C73CE222816C401002C096E /* ProfileViewController.swift */,
+				5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				5CC9A00F281733860011584E /* TestData.swift in Sources */,
 				5CC70F852816338A0052733B /* QuestsViewController.swift in Sources */,
 				5CC9A00D2817336D0011584E /* Photo.swift in Sources */,
+				5C4671CE281C239100D9E89E /* MapAnnotationViewController.swift in Sources */,
 				5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */,
 				5C73CE1F2816C3AC002C096E /* OnboardingViewController.swift in Sources */,
 				5CC9A0032816F3360011584E /* PhotoCollectionViewCell.swift in Sources */,

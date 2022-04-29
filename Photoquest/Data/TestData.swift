@@ -7,20 +7,14 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct TestData {
-    static let bananaPhoto = Photo(name: "Banana", acceptedIdentifiers: ["banana", "bananas"], image: nil, capturedDate: nil)
-    static let applePhoto = Photo(name: "Apple", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let strawberryPhoto = Photo(name: "Strawberry", acceptedIdentifiers: [], image: UIImage(named: "strawberry"), capturedDate: Date.now - 86_400)
-    static let orangePhoto = Photo(name: "Orange", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let grapesPhoto = Photo(name: "Grapes", acceptedIdentifiers: [], image: UIImage(named: "grapes"), capturedDate: Date.now)
-    static let raspberryPhoto = Photo(name: "Raspberry", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let blueberriesPhoto = Photo(name: "Blueberries", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let kiwiPhoto = Photo(name: "Kiwi", acceptedIdentifiers: [], image: nil, capturedDate: nil)
-    static let watermelonPhoto = Photo(name: "Watermelon", acceptedIdentifiers: [], image: UIImage(named: "watermelon"), capturedDate: Date.now - 864_000)
-    static let pineapplePhoto = Photo(name: "Pineapple", acceptedIdentifiers: [], image: nil, capturedDate: nil)
+    static let bananaPhoto = Photo(id: "0", name: "Banana", acceptedIdentifiers: ["banana", "bananas"], image: nil, capturedDate: nil, coordinate: nil)
+    static let applePhoto = Photo(id: "1", name: "Apple", acceptedIdentifiers: ["apple","apples"], image: nil, capturedDate: nil, coordinate: nil)
+    static let strawberryPhoto = Photo(id: "2", name: "Strawberry", acceptedIdentifiers: ["strawberry","strawberries"], image: UIImage(named: "strawberry"), capturedDate: Date.now - 86_400, coordinate: CLLocationCoordinate2D(latitude: 42.3314, longitude: -83.0458))
     
-    static let fruitQuest = Quest(name: "Fruit", photos: [bananaPhoto, applePhoto, strawberryPhoto, orangePhoto, grapesPhoto, raspberryPhoto, blueberriesPhoto, kiwiPhoto, watermelonPhoto, pineapplePhoto])
+    static let fruitQuest = Quest(id: "3", name: "Fruit", photos: [bananaPhoto, applePhoto, strawberryPhoto])
     
     static let quests = [fruitQuest]
 }

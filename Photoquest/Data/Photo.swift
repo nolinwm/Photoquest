@@ -7,12 +7,15 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 struct Photo {
+    let id: String
     let name: String
     let acceptedIdentifiers: [String]
     var image: UIImage?
     var capturedDate: Date?
+    var coordinate: CLLocationCoordinate2D?
     
     /*
      Determines indefinite article using the following rules:

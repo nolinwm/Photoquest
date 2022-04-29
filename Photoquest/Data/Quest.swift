@@ -8,6 +8,7 @@
 import Foundation
 
 struct Quest {
+    let id: String
     let name: String
     var photos: [Photo]
     var capturedPhotos: [Photo] {
