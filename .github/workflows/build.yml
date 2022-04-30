@@ -26,7 +26,7 @@ jobs:
           xcrun simctl create iPhone_13 "iPhone 13" "com.apple.CoreSimulator.SimRuntime.iOS-15-0"
           xcrun simctl list devices 15.0
       - name: Show build settings
-        run: xcodebuild -project Photoquest.project -scheme Photoquest -showBuildSettings
+        run: xcodebuild -project Photoquest.xcodeproj -scheme Photoquest -showBuildSettings
       - name: Build
         run: xcodebuild clean build -project Photoquest.xcodeproj -scheme Photoquest -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
