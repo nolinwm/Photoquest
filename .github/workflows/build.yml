@@ -27,6 +27,8 @@ jobs:
           xcrun simctl list devices 15.0
       - name: Show build settings
         run: xcodebuild -project Photoquest.xcodeproj -scheme Photoquest -showBuildSettings
+      - name: Show available build destinations
+        run: xcodebuild -project Photoquest.xcodeproj -scheme Photoquest -showDestinations
       - name: Build
         run: xcodebuild clean build -project Photoquest.xcodeproj -scheme Photoquest -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
