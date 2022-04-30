@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-latest
     strategy:
         matrix:
-          destination: ['platform=iOS Simulator,OS=15.4,name=iPhone 13']
+          destination: ['platform=iOS Simulator,OS=15.0,name=iPhone 13']
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,14 +17,14 @@ jobs:
         with:
           xcode-version: latest-stable
       - name: Install simulator
-        run: xcversion simulators --install='iOS 15.4'
+        run: xcversion simulators --install='iOS 15.0'
       - name: Prepare simulator
         run: |
           sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
-          sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 15.4.simruntime
+          sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 15.0.simruntime
           xcrun simctl list runtimes
-          xcrun simctl create iPhone_13 "iPhone 13" "com.apple.CoreSimulator.SimRuntime.iOS-15-4"
-          xcrun simctl list devices 14.4
+          xcrun simctl create iPhone_13 "iPhone 13" "com.apple.CoreSimulator.SimRuntime.iOS-15-0"
+          xcrun simctl list devices 15.0
       - name: Show build settings
         run: xcodebuild -project Photoquest.project -scheme Photoquest -showBuildSettings
       - name: Build
