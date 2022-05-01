@@ -145,10 +145,11 @@ extension QuestDetailViewController {
         overImageView.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
     }
     
-    func animateAndUpdateLabels(duration: Double) {
+    func animateAndUpdateLabels(duration: Double, direction: UISwipeGestureRecognizer.Direction) {
+        let directionModifier = (direction == .left) ? -1.0 : 1.0
         // Slide infoStack down
         UIView.animate(withDuration: duration * 0.3, delay: 0, options: .curveEaseIn) {
-            self.infoStack.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.infoStack.transform = CGAffineTransform(translationX: self.view.frame.height * directionModifier, y: 0)
         } completion: { complete in
             if let quest = self.quest {
                 self.imageLabel.text = quest.photos[self.photoIndex].name
@@ -168,7 +169,7 @@ extension QuestDetailViewController {
     
     func animateNextPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabels(duration: duration)
+        animateAndUpdateLabels(duration: duration, direction: .left)
         
         // Move backImageView off screen to the left
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -206,7 +207,7 @@ extension QuestDetailViewController {
     
     func animatePreviousPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabels(duration: duration)
+        animateAndUpdateLabels(duration: duration, direction: .right)
         
         // Move overImageView off screen to the right and slightly down
         overImageView.transform = CGAffineTransform(translationX: view.frame.width * 2, y: 50)
