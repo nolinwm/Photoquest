@@ -17,7 +17,9 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var overImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var infoStack: UIStackView!
     @IBOutlet weak var imageLabel: UILabel!
+    @IBOutlet weak var capturedLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
     let imagePicker = UIImagePickerController()
@@ -97,6 +99,11 @@ extension QuestDetailViewController {
         resetAnimationState()
         frontImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
         imageLabel.text = quest.photos[photoIndex].name
+        if let capturedDate = quest.photos[photoIndex].capturedDate {
+            capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
+        } else {
+            capturedLabel.text = "Not Captured"
+        }
     }
     
     func presentNextPhoto(setIndexTo: Int? = nil) {
@@ -138,25 +145,30 @@ extension QuestDetailViewController {
         overImageView.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
     }
     
-    func animateAndUpdateLabel(duration: Double) {
-        // Slide imageLabel down
+    func animateAndUpdateLabels(duration: Double) {
+        // Slide infoStack down
         UIView.animate(withDuration: duration * 0.3, delay: 0, options: .curveEaseIn) {
-            self.imageLabel.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.infoStack.transform = CGAffineTransform(translationX: 0, y: 100)
         } completion: { complete in
             if let quest = self.quest {
                 self.imageLabel.text = quest.photos[self.photoIndex].name
+                if let capturedDate = quest.photos[self.photoIndex].capturedDate {
+                    self.capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
+                } else {
+                    self.capturedLabel.text = "Not Captured"
+                }
             }
         }
         
         // Slide imageLabel back to original position
         UIView.animate(withDuration: duration * 0.6, delay: duration * 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 4, options: .curveEaseOut) {
-            self.imageLabel.transform = .identity
+            self.infoStack.transform = .identity
         }
     }
     
     func animateNextPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabel(duration: duration)
+        animateAndUpdateLabels(duration: duration)
         
         // Move backImageView off screen to the left
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -194,7 +206,7 @@ extension QuestDetailViewController {
     
     func animatePreviousPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabel(duration: duration)
+        animateAndUpdateLabels(duration: duration)
         
         // Move overImageView off screen to the right and slightly down
         overImageView.transform = CGAffineTransform(translationX: view.frame.width * 2, y: 50)
