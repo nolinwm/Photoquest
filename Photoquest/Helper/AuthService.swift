@@ -49,7 +49,7 @@ struct AuthService {
     }
     
     // Calls a completion closure with a Bool representing if the password-sign-in-method account exists
-    func accountExists(with emailAddress: String, completion: @escaping(Bool) -> Void) {
+    func accountExists(emailAddress: String, completion: @escaping(Bool) -> Void) {
         auth.fetchSignInMethods(forEmail: emailAddress) { methods, error in
             guard error == nil else {
                 completion(true)
