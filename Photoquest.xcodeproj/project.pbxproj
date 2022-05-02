@@ -31,11 +31,11 @@
 		5CC9A00B2817334C0011584E /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00A2817334C0011584E /* Quest.swift */; };
 		5CC9A00D2817336D0011584E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
 		5CC9A00F281733860011584E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00E281733860011584E /* TestData.swift */; };
-		5CFB6E752820374900D39BE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CFB6E742820374900D39BE1 /* GoogleService-Info.plist */; };
 		5CFB6E78282038CE00D39BE1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E77282038CE00D39BE1 /* FirebaseAuth */; };
 		5CFB6E7A282038CE00D39BE1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E79282038CE00D39BE1 /* FirebaseFirestore */; };
 		5CFB6E7C282038CE00D39BE1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E7B282038CE00D39BE1 /* FirebaseStorage */; };
 		5CFB6E7E28203CF300D39BE1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB6E7D28203CF300D39BE1 /* AuthService.swift */; };
+		5CFB6E7F282059CD00D39BE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CFB6E742820374900D39BE1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,7 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC70F732815D2610052733B /* LaunchScreen.storyboard in Resources */,
-				5CFB6E752820374900D39BE1 /* GoogleService-Info.plist in Resources */,
+				5CFB6E7F282059CD00D39BE1 /* GoogleService-Info.plist in Resources */,
 				5CC70F702815D2610052733B /* Assets.xcassets in Resources */,
 				5CC70F6E2815D25E0052733B /* Main.storyboard in Resources */,
 			);
