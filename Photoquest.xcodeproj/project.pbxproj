@@ -179,9 +179,9 @@
 				5CC70F842816338A0052733B /* QuestsViewController.swift */,
 				5CC70F6A2815D25E0052733B /* QuestDetailViewController.swift */,
 				5C73CE202816C3E6002C096E /* QuestMapViewController.swift */,
+				5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */,
 				5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */,
 				5C73CE222816C401002C096E /* ProfileViewController.swift */,
-				5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
