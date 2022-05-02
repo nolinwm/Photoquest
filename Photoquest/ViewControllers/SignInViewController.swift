@@ -72,7 +72,7 @@ class SignInViewController: UIViewController {
         AuthService.shared.signIn(emailAddress: emailText, password: passwordText) { error in
             guard error == nil else {
                 self.setActionLoading(false)
-                self.updateStatus(self.passwordStatusIcon, self.passwordErrorLabel, status: .error, error: "Invalid email address or password")
+                self.updateStatus(self.passwordStatusIcon, self.passwordErrorLabel, status: .error, error: "Invalid email address or password.")
                 return
             }
             self.signInSuccessful()
