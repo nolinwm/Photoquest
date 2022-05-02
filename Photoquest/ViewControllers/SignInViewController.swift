@@ -77,8 +77,6 @@ class SignInViewController: UIViewController {
             }
             self.signInSuccessful()
         }
-        
-        signInSuccessful()
     }
     
     func signInSuccessful() {
