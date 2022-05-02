@@ -13,6 +13,7 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var quest: Quest?
+    var initialPhotoIndex = 0
     var selectedAnnotation: MKAnnotation?
     
     override func viewDidLoad() {
@@ -28,6 +29,32 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
         }
+        
+        setupMapView()
+    }
+    
+    func setupMapView() {
+        guard let quest = quest else { return }
+        var coordinate: CLLocationCoordinate2D?
+        
+        // Check if the photo that the map button was tapped on has coordinates, if not, use the first available photo's coordinates.
+        let photo = quest.photos[initialPhotoIndex]
+        if photo.coordinate != nil {
+            coordinate = photo.coordinate
+        } else {
+            for capturedPhoto in quest.capturedPhotos {
+                if capturedPhoto.coordinate != nil {
+                    coordinate = capturedPhoto.coordinate
+                    break
+                }
+            }
+        }
+        
+        // If no photos have coordinates, return so the map opens on it's default region.
+        guard let coordinate = coordinate else { return }
+        
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 75000, longitudinalMeters: 75000)
+        mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

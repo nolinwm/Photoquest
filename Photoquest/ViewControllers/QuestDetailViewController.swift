@@ -81,10 +81,11 @@ class QuestDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let irVC = segue.destination as? ImageRecognitionViewController {
             irVC.photo = quest?.photos[photoIndex]
-            irVC.capturedImage = self.capturedImage
+            irVC.capturedImage = capturedImage
             irVC.delegate = self
         } else if let mapVC = segue.destination as? QuestMapViewController {
             mapVC.quest = quest
+            mapVC.initialPhotoIndex = photoIndex
         }
     }
 }
