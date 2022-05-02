@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
+        AuthService.shared.signOut()
         view.window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "landingViewController")
         view.window?.makeKeyAndVisible()
     }
