@@ -145,11 +145,10 @@ extension QuestDetailViewController {
         overImageView.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
     }
     
-    func animateAndUpdateLabels(duration: Double, direction: UISwipeGestureRecognizer.Direction) {
-        let directionModifier = (direction == .left) ? -1.0 : 1.0
+    func animateAndUpdateLabels(duration: Double) {
         // Slide infoStack down
-        UIView.animate(withDuration: duration * 0.3, delay: 0, options: .curveEaseIn) {
-            self.infoStack.transform = CGAffineTransform(translationX: self.view.frame.height * directionModifier, y: 0)
+        UIView.animate(withDuration: duration * 0.25, delay: 0, options: .curveEaseIn) {
+            self.infoStack.transform = CGAffineTransform(translationX: 0, y: 200)
         } completion: { complete in
             if let quest = self.quest {
                 self.imageLabel.text = quest.photos[self.photoIndex].name
@@ -161,15 +160,15 @@ extension QuestDetailViewController {
             }
         }
         
-        // Slide imageLabel back to original position
-        UIView.animate(withDuration: duration * 0.6, delay: duration * 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 4, options: .curveEaseOut) {
+        // Slide infoStack back to original position
+        UIView.animate(withDuration: duration * 0.6, delay: duration * 0.4, usingSpringWithDamping: 0.75, initialSpringVelocity: 4, options: .curveEaseOut) {
             self.infoStack.transform = .identity
         }
     }
     
     func animateNextPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabels(duration: duration, direction: .left)
+        animateAndUpdateLabels(duration: duration)
         
         // Move backImageView off screen to the left
         backImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -207,7 +206,7 @@ extension QuestDetailViewController {
     
     func animatePreviousPhotoPresentation(duration: Double, completionHandler: @escaping (_ complete: Bool) -> Void) {
         
-        animateAndUpdateLabels(duration: duration, direction: .right)
+        animateAndUpdateLabels(duration: duration)
         
         // Move overImageView off screen to the right and slightly down
         overImageView.transform = CGAffineTransform(translationX: view.frame.width * 2, y: 50)
