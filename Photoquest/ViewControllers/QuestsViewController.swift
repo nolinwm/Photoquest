@@ -10,6 +10,7 @@ import UIKit
 class QuestsViewController: UIViewController, QuestModelDelegate {
 
     @IBOutlet weak var questsTableView: UITableView!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     var questsModel = QuestModel()
     var quests = [Quest]()
@@ -23,6 +24,9 @@ class QuestsViewController: UIViewController, QuestModelDelegate {
         
         questsModel.delegate = self
         questsModel.fetchQuests()
+        
+        activitySpinner.startAnimating()
+        questsTableView.alpha = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,6 +40,13 @@ class QuestsViewController: UIViewController, QuestModelDelegate {
     func receivedQuests(quests: [Quest]) {
         self.quests = quests
         questsTableView.reloadData()
+        activitySpinner.stopAnimating()
+        
+        questsTableView.contentOffset.y = -50
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut) {
+            self.questsTableView.contentOffset.y = 0
+            self.questsTableView.alpha = 1
+        }
     }
 }
 

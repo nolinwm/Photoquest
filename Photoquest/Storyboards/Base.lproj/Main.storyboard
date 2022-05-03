@@ -72,11 +72,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="k5z-8R-qYb">
+                                <rect key="frame" x="197" y="440.5" width="20" height="20"/>
+                                <color key="color" name="CustomTint"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="etC-3S-Vk2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="k5z-8R-qYb" firstAttribute="centerY" secondItem="etC-3S-Vk2" secondAttribute="centerY" id="0R6-jA-w2r"/>
                             <constraint firstItem="HQS-3i-hye" firstAttribute="top" secondItem="etC-3S-Vk2" secondAttribute="top" id="3aj-iO-JpR"/>
+                            <constraint firstItem="k5z-8R-qYb" firstAttribute="centerX" secondItem="etC-3S-Vk2" secondAttribute="centerX" id="Jxm-5U-C0t"/>
                             <constraint firstItem="etC-3S-Vk2" firstAttribute="bottom" secondItem="HQS-3i-hye" secondAttribute="bottom" id="Kka-pJ-plC"/>
                             <constraint firstItem="HQS-3i-hye" firstAttribute="leading" secondItem="etC-3S-Vk2" secondAttribute="leading" id="pml-3S-aWz"/>
                             <constraint firstItem="etC-3S-Vk2" firstAttribute="trailing" secondItem="HQS-3i-hye" secondAttribute="trailing" id="yH9-xl-6XJ"/>
@@ -84,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Quests" largeTitleDisplayMode="always" id="ubv-cm-4et"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="k5z-8R-qYb" id="5Ba-Qw-tGQ"/>
                         <outlet property="questsTableView" destination="HQS-3i-hye" id="dEi-bK-w0S"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToQuestDetail" id="zl1-VA-pRG"/>
                     </connections>
@@ -1260,7 +1267,7 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97647058823529409" green="0.92549019607843142" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CustomTint">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
