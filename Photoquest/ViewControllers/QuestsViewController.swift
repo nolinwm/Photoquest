@@ -7,11 +7,11 @@
 
 import UIKit
 
-class QuestsViewController: UIViewController, QuestsModelDelegate {
+class QuestsViewController: UIViewController, QuestModelDelegate {
 
     @IBOutlet weak var questsTableView: UITableView!
     
-    let questsModel = QuestsModel()
+    let questsModel = QuestModel()
     var quests = [Quest]()
     var selectedIndexPath: IndexPath?
     

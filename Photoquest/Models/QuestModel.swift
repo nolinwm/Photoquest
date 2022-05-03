@@ -11,14 +11,14 @@ import FirebaseFirestore
 import CoreLocation
 import UIKit
 
-protocol QuestsModelDelegate {
+protocol QuestModelDelegate {
     func receivedQuests(quests: [Quest])
 }
 
-struct QuestsModel {
+struct QuestModel {
     
     private let firestore = Firestore.firestore()
-    var delegate: QuestsModelDelegate?
+    var delegate: QuestModelDelegate?
     
     func fetchQuests() {
         firestore.collection("quests").getDocuments { snapshot, error in
