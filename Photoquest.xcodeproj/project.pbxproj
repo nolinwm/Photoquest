@@ -11,6 +11,7 @@
 		5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
 		5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */; };
 		5C5DA0B328217F9200A5BB22 /* QuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B228217F9200A5BB22 /* QuestModel.swift */; };
+		5C5DA0B72821B03E00A5BB22 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
 		5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
@@ -31,7 +32,6 @@
 		5CC9A0052817270A0011584E /* ImageRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */; };
 		5CC9A00B2817334C0011584E /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00A2817334C0011584E /* Quest.swift */; };
 		5CC9A00D2817336D0011584E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
-		5CC9A00F281733860011584E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00E281733860011584E /* TestData.swift */; };
 		5CD49D0728215B54007B6974 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD49D0628215B54007B6974 /* GoogleService-Info.plist */; };
 		5CD49D0828215B54007B6974 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD49D0628215B54007B6974 /* GoogleService-Info.plist */; };
 		5CFB6E78282038CE00D39BE1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E77282038CE00D39BE1 /* FirebaseAuth */; };
@@ -56,6 +56,7 @@
 		5C56EA5D281C74C60069AE92 /* PhotoquestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoquestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoquestTests.swift; sourceTree = "<group>"; };
 		5C5DA0B228217F9200A5BB22 /* QuestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestModel.swift; sourceTree = "<group>"; };
+		5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		5C73CE182816C370002C096E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		5C73CE1A2816C38A002C096E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		5C73CE1C2816C398002C096E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionViewController.swift; sourceTree = "<group>"; };
 		5CC9A00A2817334C0011584E /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5CC9A00C2817336D0011584E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		5CC9A00E281733860011584E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		5CD49D0628215B54007B6974 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CFB6E7D28203CF300D39BE1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +172,7 @@
 			children = (
 				5C5DA0B228217F9200A5BB22 /* QuestModel.swift */,
 				5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */,
+				5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,7 +208,6 @@
 			children = (
 				5CC9A00A2817334C0011584E /* Quest.swift */,
 				5CC9A00C2817336D0011584E /* Photo.swift */,
-				5CC9A00E281733860011584E /* TestData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -338,10 +338,10 @@
 				5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */,
 				5C73CE212816C3E6002C096E /* QuestMapViewController.swift in Sources */,
 				5CFB6E7E28203CF300D39BE1 /* AuthService.swift in Sources */,
+				5C5DA0B72821B03E00A5BB22 /* PhotoModel.swift in Sources */,
 				5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */,
 				5C73CE232816C401002C096E /* ProfileViewController.swift in Sources */,
 				5CC9A00B2817334C0011584E /* Quest.swift in Sources */,
-				5CC9A00F281733860011584E /* TestData.swift in Sources */,
 				5CC70F852816338A0052733B /* QuestsViewController.swift in Sources */,
 				5CC9A00D2817336D0011584E /* Photo.swift in Sources */,
 				5C4671CE281C239100D9E89E /* MapAnnotationViewController.swift in Sources */,
