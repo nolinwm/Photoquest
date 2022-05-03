@@ -31,6 +31,12 @@
 		5CC9A00B2817334C0011584E /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00A2817334C0011584E /* Quest.swift */; };
 		5CC9A00D2817336D0011584E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
 		5CC9A00F281733860011584E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00E281733860011584E /* TestData.swift */; };
+		5CD49D0728215B54007B6974 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD49D0628215B54007B6974 /* GoogleService-Info.plist */; };
+		5CD49D0828215B54007B6974 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD49D0628215B54007B6974 /* GoogleService-Info.plist */; };
+		5CFB6E78282038CE00D39BE1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E77282038CE00D39BE1 /* FirebaseAuth */; };
+		5CFB6E7A282038CE00D39BE1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E79282038CE00D39BE1 /* FirebaseFirestore */; };
+		5CFB6E7C282038CE00D39BE1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E7B282038CE00D39BE1 /* FirebaseStorage */; };
+		5CFB6E7E28203CF300D39BE1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB6E7D28203CF300D39BE1 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,8 @@
 		5CC9A00A2817334C0011584E /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5CC9A00C2817336D0011584E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5CC9A00E281733860011584E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		5CD49D0628215B54007B6974 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5CFB6E7D28203CF300D39BE1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFB6E78282038CE00D39BE1 /* FirebaseAuth in Frameworks */,
+				5CFB6E7A282038CE00D39BE1 /* FirebaseFirestore in Frameworks */,
+				5CFB6E7C282038CE00D39BE1 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
+				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -148,6 +160,7 @@
 				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
 				5CC70F6F2815D2610052733B /* Assets.xcassets */,
 				5CC70F742815D2610052733B /* Info.plist */,
+				5CD49D0628215B54007B6974 /* GoogleService-Info.plist */,
 			);
 			path = Photoquest;
 			sourceTree = "<group>";
@@ -230,6 +243,11 @@
 			dependencies = (
 			);
 			name = Photoquest;
+			packageProductDependencies = (
+				5CFB6E77282038CE00D39BE1 /* FirebaseAuth */,
+				5CFB6E79282038CE00D39BE1 /* FirebaseFirestore */,
+				5CFB6E7B282038CE00D39BE1 /* FirebaseStorage */,
+			);
 			productName = Photoquest;
 			productReference = 5CC70F632815D25E0052733B /* Photoquest.app */;
 			productType = "com.apple.product-type.application";
@@ -262,6 +280,9 @@
 				Base,
 			);
 			mainGroup = 5CC70F5A2815D25E0052733B;
+			packageReferences = (
+				5CFB6E76282038CE00D39BE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 5CC70F642815D25E0052733B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD49D0828215B54007B6974 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC70F732815D2610052733B /* LaunchScreen.storyboard in Resources */,
+				5CD49D0728215B54007B6974 /* GoogleService-Info.plist in Resources */,
 				5CC70F702815D2610052733B /* Assets.xcassets in Resources */,
 				5CC70F6E2815D25E0052733B /* Main.storyboard in Resources */,
 			);
@@ -311,6 +334,7 @@
 				5CC70F672815D25E0052733B /* AppDelegate.swift in Sources */,
 				5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */,
 				5C73CE212816C3E6002C096E /* QuestMapViewController.swift in Sources */,
+				5CFB6E7E28203CF300D39BE1 /* AuthService.swift in Sources */,
 				5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */,
 				5C73CE232816C401002C096E /* ProfileViewController.swift in Sources */,
 				5CC9A00B2817334C0011584E /* Quest.swift in Sources */,
@@ -518,9 +542,12 @@
 				DEVELOPMENT_TEAM = 7927LZ58S8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photoquest/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Photoquest uses the camera to take pictures to complete quests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Photoquest uses your location to tag where your pictures were taken.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -546,9 +573,12 @@
 				DEVELOPMENT_TEAM = 7927LZ58S8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photoquest/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Photoquest uses the camera to take pictures to complete quests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Photoquest uses your location to tag where your pictures were taken.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -595,6 +625,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CFB6E76282038CE00D39BE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CFB6E77282038CE00D39BE1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CFB6E76282038CE00D39BE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		5CFB6E79282038CE00D39BE1 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CFB6E76282038CE00D39BE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		5CFB6E7B282038CE00D39BE1 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CFB6E76282038CE00D39BE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CC70F5B2815D25E0052733B /* Project object */;
 }

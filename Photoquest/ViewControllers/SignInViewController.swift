@@ -55,7 +55,7 @@ class SignInViewController: UIViewController {
         setActionLoading(true)
         
         // Validate email address format before attempting sign in
-        guard InputValidationService.validateEmail(email: emailTextField.text) else {
+        guard let emailText = emailTextField.text, InputValidationService.validateEmail(email: emailText) else {
             setActionLoading(false)
             updateStatus(passwordStatusIcon, passwordErrorLabel, status: .error, error: "Invalid email address or password.")
             return
@@ -68,12 +68,21 @@ class SignInViewController: UIViewController {
             return
         }
         
-        signInSuccessful()
+        // Attempt sign in
+        AuthService.shared.signIn(emailAddress: emailText, password: passwordText) { error in
+            guard error == nil else {
+                self.setActionLoading(false)
+                self.updateStatus(self.passwordStatusIcon, self.passwordErrorLabel, status: .error, error: "Invalid email address or password.")
+                return
+            }
+            self.signInSuccessful()
+        }
     }
     
     func signInSuccessful() {
         view.window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "rootTabViewController")
         view.window?.makeKeyAndVisible()
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
