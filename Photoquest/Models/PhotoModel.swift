@@ -42,7 +42,7 @@ struct PhotoModel {
         }
     }
     
-    func fetchUserPhotoData(for photoId: String, completion: @escaping (String?, Date?, CLLocationCoordinate2D?) -> Void) {
+    private func fetchUserPhotoData(for photoId: String, completion: @escaping (String?, Date?, CLLocationCoordinate2D?) -> Void) {
         firestore.collection("userPhotoData")
             .whereField("photoId", isEqualTo: photoId)
             .whereField("userId", isEqualTo: AuthService.shared.signedInUid ?? "")
