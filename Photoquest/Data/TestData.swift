@@ -14,7 +14,7 @@ struct TestData {
     static let applePhoto = Photo(id: "1", name: "Apple", acceptedIdentifiers: ["apple","apples"], image: nil, capturedDate: nil, coordinate: nil)
     static let strawberryPhoto = Photo(id: "2", name: "Strawberry", acceptedIdentifiers: ["strawberry","strawberries"], image: UIImage(named: "strawberry"), capturedDate: Date.now - 86_400, coordinate: CLLocationCoordinate2D(latitude: 42.3314, longitude: -83.0458))
     
-    static let fruitQuest = Quest(id: "3", name: "Fruit", photos: [bananaPhoto, applePhoto, strawberryPhoto])
+    static let fruitQuest = Quest(id: "3", name: "Fruit", photoCount: 3, capturedPhotoCount: 1)
     
     static let quests = [fruitQuest]
 }
