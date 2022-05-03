@@ -11,7 +11,7 @@ class QuestsViewController: UIViewController, QuestModelDelegate {
 
     @IBOutlet weak var questsTableView: UITableView!
     
-    let questsModel = QuestModel()
+    var questsModel = QuestModel()
     var quests = [Quest]()
     var selectedIndexPath: IndexPath?
     
