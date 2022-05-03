@@ -97,17 +97,22 @@ class QuestDetailViewController: UIViewController, PhotoModelDelegate {
     }
     
     func setNetworkLoading(_ loading: Bool) {
-        backImageView.isHidden = loading
-        middleImageView.isHidden = loading
-        frontImageView.isHidden = loading
-        overImageView.isHidden = loading
-        cameraButton.isHidden = loading
-        infoStack.isHidden = loading
-        pageControl.isHidden = loading
         if loading {
             activitySpinner.startAnimating()
         } else {
             activitySpinner.stopAnimating()
+        }
+        
+        UIView.animate(withDuration: (loading ? 0 : 0.25), delay: 0, options: .curveEaseIn) {
+            self.infoStack.alpha = loading ? 0 : 1
+            self.pageControl.alpha = loading ? 0 : 1
+        } completion: { complete in
+            self.cameraButton.isEnabled = loading ? false : true
+        }
+        
+        UIView.animate(withDuration: (loading ? 0 : 0.25), delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .curveEaseOut) {
+            self.infoStack.transform = loading ? CGAffineTransform(scaleX: 0.8, y: 0.8) : .identity
+            self.pageControl.transform = loading ? CGAffineTransform(scaleX: 0.8, y: 0.8) : .identity
         }
     }
     
