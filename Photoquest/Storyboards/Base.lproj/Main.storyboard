@@ -374,10 +374,15 @@
                                     <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oc-IO-TZ2"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ix4-5h-JjT">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <color key="color" name="CustomTint"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ix4-5h-JjT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3PY-tg-Gox"/>
                             <constraint firstItem="YHK-p3-eBn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="3X1-h4-JwB"/>
                             <constraint firstItem="YHK-p3-eBn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="44v-tV-aO1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JrV-h3-Isf" secondAttribute="bottom" constant="40" id="8mq-U2-aqV"/>
@@ -390,6 +395,7 @@
                             <constraint firstItem="JrV-h3-Isf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMV-wb-sch"/>
                             <constraint firstItem="MuR-BA-RLx" firstAttribute="height" secondItem="U9r-yF-DYS" secondAttribute="height" id="WY5-Cu-MCA"/>
                             <constraint firstItem="9lv-Ua-AKE" firstAttribute="width" secondItem="U9r-yF-DYS" secondAttribute="width" id="Y6e-Go-IHg"/>
+                            <constraint firstItem="Ix4-5h-JjT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yhv-sY-ijn"/>
                             <constraint firstItem="9lv-Ua-AKE" firstAttribute="centerX" secondItem="U9r-yF-DYS" secondAttribute="centerX" id="ab1-LE-AeO"/>
                             <constraint firstItem="JrV-h3-Isf" firstAttribute="top" secondItem="YHK-p3-eBn" secondAttribute="bottom" constant="20" id="cKh-iN-iMS"/>
                             <constraint firstItem="JrV-h3-Isf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="csM-Ed-acK"/>
@@ -408,6 +414,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activitySpinner" destination="Ix4-5h-JjT" id="ZWO-Jq-orv"/>
                         <outlet property="backImageView" destination="THB-mE-Q9B" id="K8P-Qn-3ea"/>
                         <outlet property="cameraButton" destination="JrV-h3-Isf" id="pUt-nA-J1Z"/>
                         <outlet property="capturedLabel" destination="56Q-dm-cEi" id="Gzp-qh-BWm"/>
