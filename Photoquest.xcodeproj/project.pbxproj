@@ -10,6 +10,7 @@
 		5C4671CE281C239100D9E89E /* MapAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */; };
 		5C54F4182818731D001847F7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
 		5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */; };
+		5C5DA0B328217F9200A5BB22 /* QuestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B228217F9200A5BB22 /* QuestsModel.swift */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
 		5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
@@ -54,6 +55,7 @@
 		5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		5C56EA5D281C74C60069AE92 /* PhotoquestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoquestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoquestTests.swift; sourceTree = "<group>"; };
+		5C5DA0B228217F9200A5BB22 /* QuestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsModel.swift; sourceTree = "<group>"; };
 		5C73CE182816C370002C096E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		5C73CE1A2816C38A002C096E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		5C73CE1C2816C398002C096E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		5CC70F812816309D0052733B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5C5DA0B228217F9200A5BB22 /* QuestsModel.swift */,
 				5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */,
 			);
 			path = Models;
@@ -348,6 +351,7 @@
 				5C7906C6281983FD00B2E450 /* InputValidationService.swift in Sources */,
 				5CC70F8028160BAC0052733B /* ImageRecognizer.swift in Sources */,
 				5CC9A0052817270A0011584E /* ImageRecognitionViewController.swift in Sources */,
+				5C5DA0B328217F9200A5BB22 /* QuestsModel.swift in Sources */,
 				5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
