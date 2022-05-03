@@ -54,7 +54,7 @@ struct QuestModel {
                     completion(capturedPhotoCount)
                 } else {
                     // Create doc if not found
-                    let newDoc = firestore.collection("userCapturedPhotoCountData").document(UUID().uuidString)
+                    let newDoc = firestore.collection("userCapturedPhotoCountData").document()
                     newDoc.setData([
                         "capturedPhotoCount": 0,
                         "questId": questId,
