@@ -7,11 +7,12 @@
 
 import UIKit
 
-class QuestsViewController: UIViewController {
+class QuestsViewController: UIViewController, QuestsModelDelegate {
 
     @IBOutlet weak var questsTableView: UITableView!
     
-    var quests = TestData.quests
+    let questsModel = QuestsModel()
+    var quests = [Quest]()
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -19,6 +20,9 @@ class QuestsViewController: UIViewController {
 
         questsTableView.delegate = self
         questsTableView.dataSource = self
+        
+        questsModel.delegate = self
+        questsModel.fetchQuests()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -27,6 +31,11 @@ class QuestsViewController: UIViewController {
                 detailVC.quest = quests[selectedIndexPath.row]
             }
         }
+    }
+    
+    func receivedQuests(quests: [Quest]) {
+        self.quests = quests
+        questsTableView.reloadData()
     }
 }
 
