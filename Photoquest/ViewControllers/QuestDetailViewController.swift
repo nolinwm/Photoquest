@@ -91,7 +91,7 @@ class QuestDetailViewController: UIViewController, PhotoModelDelegate {
             irVC.capturedImage = capturedImage
             irVC.delegate = self
         } else if let mapVC = segue.destination as? QuestMapViewController {
-            mapVC.quest = quest
+            mapVC.photos = photos
             mapVC.initialPhotoIndex = photoIndex
         }
     }
