@@ -21,6 +21,6 @@ class QuestTableViewCell: UITableViewCell {
         
         self.quest = quest
         nameLabel.text = quest.name
-        progressButton.setTitle("\(quest.capturedPhotos.count) / \(quest.photos.count)", for: .normal)
+        progressButton.setTitle("\(quest.capturedPhotoCount) / \(quest.photoCount)", for: .normal)
     }
 }
