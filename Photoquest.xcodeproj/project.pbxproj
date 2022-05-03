@@ -35,7 +35,6 @@
 		5CFB6E7A282038CE00D39BE1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E79282038CE00D39BE1 /* FirebaseFirestore */; };
 		5CFB6E7C282038CE00D39BE1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5CFB6E7B282038CE00D39BE1 /* FirebaseStorage */; };
 		5CFB6E7E28203CF300D39BE1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB6E7D28203CF300D39BE1 /* AuthService.swift */; };
-		5CFB6E7F282059CD00D39BE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CFB6E742820374900D39BE1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +75,6 @@
 		5CC9A00A2817334C0011584E /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5CC9A00C2817336D0011584E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5CC9A00E281733860011584E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		5CFB6E742820374900D39BE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CFB6E7D28203CF300D39BE1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +157,6 @@
 				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
 				5CC70F6F2815D2610052733B /* Assets.xcassets */,
 				5CC70F742815D2610052733B /* Info.plist */,
-				5CFB6E742820374900D39BE1 /* GoogleService-Info.plist */,
 			);
 			path = Photoquest;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC70F732815D2610052733B /* LaunchScreen.storyboard in Resources */,
-				5CFB6E7F282059CD00D39BE1 /* GoogleService-Info.plist in Resources */,
 				5CC70F702815D2610052733B /* Assets.xcassets in Resources */,
 				5CC70F6E2815D25E0052733B /* Main.storyboard in Resources */,
 			);
@@ -540,9 +536,12 @@
 				DEVELOPMENT_TEAM = 7927LZ58S8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photoquest/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Photoquest uses the camera to take pictures to complete quests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Photoquest uses your location to tag where your pictures were taken.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -568,9 +567,12 @@
 				DEVELOPMENT_TEAM = 7927LZ58S8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photoquest/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Photoquest uses the camera to take pictures to complete quests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Photoquest uses your location to tag where your pictures were taken.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -596,7 +598,7 @@
 				5C56EA64281C74C60069AE92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5CC70F5E2815D25E0052733B /* Build configuration list for PBXProject "Photoquest" */ = {
 			isa = XCConfigurationList;
@@ -605,7 +607,7 @@
 				5CC70F762815D2610052733B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5CC70F772815D2610052733B /* Build configuration list for PBXNativeTarget "Photoquest" */ = {
 			isa = XCConfigurationList;
@@ -614,7 +616,7 @@
 				5CC70F792815D2610052733B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
