@@ -134,7 +134,7 @@ struct PhotoModel {
     // Upload an image to firebase storage and call a completion handler with the download URL
     private func uploadImage(_ image: UIImage, completion: @escaping (String) -> Void) {
         let reference = storage.reference().child("images/\(UUID().uuidString).jpeg")
-        let data = image.jpegData(compressionQuality: 0.5)
+        let data = image.jpegData(compressionQuality: 0)
         guard let data = data else { return }
         
         reference.putData(data, metadata: nil) { metadata, error in
@@ -154,7 +154,8 @@ struct PhotoModel {
     
     func fetchImage(for url: String, completion: @escaping (UIImage?) -> Void) {
         let reference = storage.reference(forURL: url)
-        reference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        // Max download size of 5MB
+        reference.getData(maxSize: 5_000_000) { data, error in
             guard let data = data, error == nil else {
                 completion(nil)
                 return
