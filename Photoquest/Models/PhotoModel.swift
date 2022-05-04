@@ -35,7 +35,7 @@ struct PhotoModel {
                 let acceptedIdentifiers = acceptedIdentifiersString.components(separatedBy: ", ")
                 
                 fetchUserPhotoData(for: doc.documentID) { imageUrl, capturedDate, coordinate in
-                    let photo = Photo(id: doc.documentID, name: name, acceptedIdentifiers: acceptedIdentifiers, image: nil, capturedDate: capturedDate, coordinate: coordinate, indefiniteArticleOverride: nil)
+                    let photo = Photo(id: doc.documentID, name: name, acceptedIdentifiers: acceptedIdentifiers, imageUrl: imageUrl, image: nil, capturedDate: capturedDate, coordinate: coordinate, indefiniteArticleOverride: nil)
                     photos.append(photo)
                     if photos.count == snapshot.documents.count {
                         delegate?.receivedPhotos(photos: photos)
