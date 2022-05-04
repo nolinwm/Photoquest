@@ -33,6 +33,7 @@ class QuestsViewController: UIViewController, QuestModelDelegate {
         if let detailVC = segue.destination as? QuestDetailViewController {
             if let selectedIndexPath = selectedIndexPath {
                 detailVC.quest = quests[selectedIndexPath.row]
+                detailVC.questCell = questsTableView.cellForRow(at: selectedIndexPath) as? QuestTableViewCell
             }
         }
     }
