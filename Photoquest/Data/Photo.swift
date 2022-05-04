@@ -35,7 +35,7 @@ struct Photo {
     }
     let indefiniteArticleOverride: String?
     
-    init(id: String, name: String, acceptedIdentifiers: [String], imageUrl: String?, image: UIImage? = nil, capturedDate: Date? = nil, coordinate: CLLocationCoordinate2D? = nil, indefiniteArticleOverride: String? = nil) {
+    init(id: String, name: String, acceptedIdentifiers: [String], imageUrl: String? = nil, image: UIImage? = nil, capturedDate: Date? = nil, coordinate: CLLocationCoordinate2D? = nil, indefiniteArticleOverride: String? = nil) {
         self.id = id
         self.name = name
         self.acceptedIdentifiers = acceptedIdentifiers
