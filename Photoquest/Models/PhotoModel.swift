@@ -8,7 +8,9 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 import CoreLocation
+import UIKit
 
 protocol PhotoModelDelegate {
     func receivedPhotos(photos: [Photo])
@@ -17,6 +19,7 @@ protocol PhotoModelDelegate {
 struct PhotoModel {
     
     private let firestore = Firestore.firestore()
+    private let storage = Storage.storage()
     var delegate: PhotoModelDelegate?
     
     func fetchPhotos(for questId: String) {
@@ -70,5 +73,17 @@ struct PhotoModel {
                     completion(nil, nil, nil)
                 }
             }
+    }
+    
+    func fetchImage(for url: String, completion: @escaping (UIImage?) -> Void) {
+        let reference = storage.reference(forURL: url)
+        reference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
+        }
     }
 }

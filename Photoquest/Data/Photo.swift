@@ -13,6 +13,7 @@ struct Photo {
     let id: String
     let name: String
     let acceptedIdentifiers: [String]
+    var imageUrl: String?
     var image: UIImage?
     var capturedDate: Date?
     var coordinate: CLLocationCoordinate2D?
