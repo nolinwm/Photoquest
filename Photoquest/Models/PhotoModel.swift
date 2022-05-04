@@ -86,4 +86,25 @@ struct PhotoModel {
             completion(image)
         }
     }
+    
+    // Upload an image to firebase storage and call a completion handler with the download URL
+    func uploadImage(_ image: UIImage, completion: @escaping (String) -> Void) {
+        let reference = storage.reference().child("images/\(UUID().uuidString).jpeg")
+        let data = image.jpegData(compressionQuality: 0.5)
+        guard let data = data else { return }
+        
+        reference.putData(data, metadata: nil) { metadata, error in
+            guard error == nil else {
+                // TODO: Image upload error handling
+                return
+            }
+            reference.downloadURL { url, error in
+                guard let url = url, error == nil else {
+                    // TODO: Download url error handling
+                    return
+                }
+                completion(url.absoluteString)
+            }
+        }
+    }
 }
