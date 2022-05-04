@@ -329,11 +329,12 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
             return
         }
         if imageWasAccepted, let capturedImage = capturedImage {
-            DispatchQueue.main.async {
-                self.frontImageView.image = capturedImage
-            }
             photos[photoIndex].image = capturedImage
             photos[photoIndex].capturedDate = Date.now
+            DispatchQueue.main.async {
+                self.frontImageView.image = capturedImage
+                self.capturedLabel.text = "Captured \(Date.now.formatted(date: .long, time: .omitted))"
+            }
             photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "") { isNewPhoto in
                 if isNewPhoto {
                     self.questCell?.incrementPhotoCount()
