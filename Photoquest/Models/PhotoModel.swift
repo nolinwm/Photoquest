@@ -64,9 +64,7 @@ struct PhotoModel {
                     let geopoint = doc["geopoint"] as? GeoPoint
                     var coordinate: CLLocationCoordinate2D?
                     if let geopoint = geopoint {
-                        if geopoint.latitude != 0 && geopoint.longitude != 0 {
-                            coordinate = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
-                        }
+                        coordinate = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
                     }
                     completion(imageUrl, capturedDate, coordinate)
                 } else {
@@ -75,20 +73,47 @@ struct PhotoModel {
             }
     }
     
-    func fetchImage(for url: String, completion: @escaping (UIImage?) -> Void) {
-        let reference = storage.reference(forURL: url)
-        reference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
+    func savePhoto(_ photo: Photo) {
+        firestore.collection("userPhotoData")
+            .whereField("photoId", isEqualTo: photo.id)
+            .whereField("userId", isEqualTo: AuthService.shared.signedInUid ?? "")
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot, error == nil else {
+                    // TODO: Save photo error handling
+                    return
+                }
+                if snapshot.documents.count >= 1 {
+                    // Photo exists, update data
+                    let doc = snapshot.documents.first!
+                    doc.reference.updateData([
+                        "imageUrl": photo.imageUrl!,
+                        "capturedTimestamp": Timestamp(date: photo.capturedDate!),
+                    ])
+                    if let coordinate = photo.coordinate {
+                        doc.reference.updateData([
+                            "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        ])
+                    }
+                } else {
+                    // New photo, set data and update capturedPhotoCount
+                    let newDoc = firestore.collection("userPhotoData").document()
+                    newDoc.setData([
+                        "photoId": photo.id,
+                        "userId": AuthService.shared.signedInUid ?? "",
+                        "imageUrl": photo.imageUrl!,
+                        "capturedTimestamp": Timestamp(date: photo.capturedDate!),
+                    ])
+                    if let coordinate = photo.coordinate {
+                        newDoc.updateData([
+                            "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        ])
+                    }
+                }
             }
-            let image = UIImage(data: data)
-            completion(image)
-        }
     }
     
     // Upload an image to firebase storage and call a completion handler with the download URL
-    func uploadImage(_ image: UIImage, completion: @escaping (String) -> Void) {
+    private func uploadImage(_ image: UIImage, completion: @escaping (String) -> Void) {
         let reference = storage.reference().child("images/\(UUID().uuidString).jpeg")
         let data = image.jpegData(compressionQuality: 0.5)
         guard let data = data else { return }
@@ -105,6 +130,18 @@ struct PhotoModel {
                 }
                 completion(url.absoluteString)
             }
+        }
+    }
+    
+    func fetchImage(for url: String, completion: @escaping (UIImage?) -> Void) {
+        let reference = storage.reference(forURL: url)
+        reference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
         }
     }
 }
