@@ -12,7 +12,7 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var quest: Quest?
+    var photos = [Photo]()
     var initialPhotoIndex = 0
     var selectedAnnotation: MKAnnotation?
     
@@ -20,9 +20,7 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         
-        guard let quest = quest else { return }
-        
-        for photo in quest.capturedPhotos {
+        for photo in photos {
             guard let coordinate = photo.coordinate else { continue }
             let annotation = MKPointAnnotation()
             annotation.title = photo.name
@@ -34,17 +32,15 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func setupMapView() {
-        guard let quest = quest else { return }
         var coordinate: CLLocationCoordinate2D?
         
         // Check if the photo that the map button was tapped on has coordinates, if not, use the first available photo's coordinates.
-        let photo = quest.photos[initialPhotoIndex]
-        if photo.coordinate != nil {
-            coordinate = photo.coordinate
+        if photos[initialPhotoIndex].coordinate != nil {
+            coordinate = photos[initialPhotoIndex].coordinate
         } else {
-            for capturedPhoto in quest.capturedPhotos {
-                if capturedPhoto.coordinate != nil {
-                    coordinate = capturedPhoto.coordinate
+            for photo in photos {
+                if photo.coordinate != nil {
+                    coordinate = photo.coordinate
                     break
                 }
             }
@@ -78,8 +74,8 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? MapAnnotationViewController {
-            guard let quest = quest, let selectedAnnotation = selectedAnnotation else { return }
-            vc.photo = quest.capturedPhotos.first {
+            guard let selectedAnnotation = selectedAnnotation else { return }
+            vc.photo = photos.first {
                 $0.name == selectedAnnotation.title
             }
         }

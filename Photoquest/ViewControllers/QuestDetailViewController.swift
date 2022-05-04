@@ -10,7 +10,7 @@ import CoreML
 import Vision
 import CoreLocation
 
-class QuestDetailViewController: UIViewController {
+class QuestDetailViewController: UIViewController, PhotoModelDelegate {
     
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var middleImageView: UIImageView!
@@ -21,12 +21,15 @@ class QuestDetailViewController: UIViewController {
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var capturedLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     let imagePicker = UIImagePickerController()
     let imagePlaceholder = UIImage(named: "imagePlaceholder")
     var capturedImage: UIImage?
     
+    var photoModel = PhotoModel()
     var quest: Quest?
+    var photos = [Photo]()
     var photoIndex = 0
     
     let locationManager = CLLocationManager()
@@ -34,11 +37,15 @@ class QuestDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNetworkLoading(true)
+        
+        photoModel.delegate = self
+        if let quest = quest {
+            photoModel.fetchPhotos(for: quest.id)
+        }
+        
         locationManager.delegate = self
         stylizeView()
-        setupImagePicker()
-        setupSwipeGestures()
-        setupImageViews()
     }
     
     private func stylizeView() {
@@ -80,13 +87,41 @@ class QuestDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let irVC = segue.destination as? ImageRecognitionViewController {
-            irVC.photo = quest?.photos[photoIndex]
+            irVC.photo = photos[photoIndex]
             irVC.capturedImage = capturedImage
             irVC.delegate = self
         } else if let mapVC = segue.destination as? QuestMapViewController {
-            mapVC.quest = quest
+            mapVC.photos = photos
             mapVC.initialPhotoIndex = photoIndex
         }
+    }
+    
+    func setNetworkLoading(_ loading: Bool) {
+        if loading {
+            activitySpinner.startAnimating()
+        } else {
+            activitySpinner.stopAnimating()
+        }
+        
+        UIView.animate(withDuration: (loading ? 0 : 0.25), delay: 0, options: .curveEaseIn) {
+            self.infoStack.alpha = loading ? 0 : 1
+            self.pageControl.alpha = loading ? 0 : 1
+        } completion: { complete in
+            self.cameraButton.isEnabled = loading ? false : true
+        }
+        
+        UIView.animate(withDuration: (loading ? 0 : 0.25), delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .curveEaseOut) {
+            self.infoStack.transform = loading ? CGAffineTransform(scaleX: 0.8, y: 0.8) : .identity
+            self.pageControl.transform = loading ? CGAffineTransform(scaleX: 0.8, y: 0.8) : .identity
+        }
+    }
+    
+    func receivedPhotos(photos: [Photo]) {
+        self.photos = photos
+        setupImagePicker()
+        setupSwipeGestures()
+        setupImageViews()
+        setNetworkLoading(false)
     }
 }
 
@@ -94,13 +129,12 @@ class QuestDetailViewController: UIViewController {
 extension QuestDetailViewController {
     
     func setupImageViews() {
-        guard let quest = quest else { return }
-        pageControl.numberOfPages = quest.photos.count
+        pageControl.numberOfPages = photos.count
         adjustPhotoIndex(to: photoIndex) // Ensures photoIndex is in bounds
         resetAnimationState()
-        frontImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
-        imageLabel.text = quest.photos[photoIndex].name
-        if let capturedDate = quest.photos[photoIndex].capturedDate {
+        frontImageView.image = photos[photoIndex].image ?? imagePlaceholder
+        imageLabel.text = photos[photoIndex].name
+        if let capturedDate = photos[photoIndex].capturedDate {
             capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
         } else {
             capturedLabel.text = "Not Captured"
@@ -108,32 +142,30 @@ extension QuestDetailViewController {
     }
     
     func presentNextPhoto(setIndexTo: Int? = nil) {
-        guard let quest = quest else { return }
         setActionLoading(true)
-        backImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        backImageView.image = photos[photoIndex].image ?? imagePlaceholder
         if let setIndexTo = setIndexTo {
             adjustPhotoIndex(to: setIndexTo)
         } else {
             adjustPhotoIndex(by: 1)
         }
-        middleImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        middleImageView.image = photos[photoIndex].image ?? imagePlaceholder
         
         animateNextPhotoPresentation(duration: 0.425) { complete in
-            self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
+            self.frontImageView.image = self.photos[self.photoIndex].image ?? self.imagePlaceholder
             self.resetAnimationState()
             self.setActionLoading(false)
         }
     }
     
     func presentPreviousPhoto() {
-        guard let quest = quest else { return }
         setActionLoading(true)
         adjustPhotoIndex(by: -1)
-        backImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
-        overImageView.image = quest.photos[photoIndex].image ?? imagePlaceholder
+        backImageView.image = photos[photoIndex].image ?? imagePlaceholder
+        overImageView.image = photos[photoIndex].image ?? imagePlaceholder
         
         animatePreviousPhotoPresentation(duration: 0.425) { complete in
-            self.frontImageView.image = quest.photos[self.photoIndex].image ?? self.imagePlaceholder
+            self.frontImageView.image = self.photos[self.photoIndex].image ?? self.imagePlaceholder
             self.resetAnimationState()
             self.setActionLoading(false)
         }
@@ -151,13 +183,11 @@ extension QuestDetailViewController {
         UIView.animate(withDuration: duration * 0.25, delay: 0, options: .curveEaseIn) {
             self.infoStack.transform = CGAffineTransform(translationX: 0, y: 200)
         } completion: { complete in
-            if let quest = self.quest {
-                self.imageLabel.text = quest.photos[self.photoIndex].name
-                if let capturedDate = quest.photos[self.photoIndex].capturedDate {
-                    self.capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
-                } else {
-                    self.capturedLabel.text = "Not Captured"
-                }
+            self.imageLabel.text = self.photos[self.photoIndex].name
+            if let capturedDate = self.photos[self.photoIndex].capturedDate {
+                self.capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
+            } else {
+                self.capturedLabel.text = "Not Captured"
             }
         }
         
@@ -250,11 +280,10 @@ extension QuestDetailViewController {
     }
     
     func adjustPhotoIndex(by increment: Int? = nil, to hardValue: Int? = nil) {
-        guard let quest = quest else { return }
         photoIndex = hardValue ?? photoIndex + (increment ?? 1)
         if photoIndex < 0 {
-            photoIndex = quest.photos.count - 1
-        } else if photoIndex >= quest.photos.count {
+            photoIndex = photos.count - 1
+        } else if photoIndex >= photos.count {
             photoIndex = 0
         }
         pageControl.currentPage = photoIndex
@@ -290,8 +319,8 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
                 self.frontImageView.image = capturedImage
                 self.backImageView.image = self.frontImageView.image
             }
-            quest?.photos[photoIndex].image = capturedImage
-            quest?.photos[photoIndex].capturedDate = Date.now
+            photos[photoIndex].image = capturedImage
+            photos[photoIndex].capturedDate = Date.now
             tagPhotoLocation()
         }
     }
@@ -308,7 +337,7 @@ extension QuestDetailViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            quest?.photos[photoIndexToTagLocation].coordinate = location.coordinate
+            photos[photoIndexToTagLocation].coordinate = location.coordinate
         }
     }
     

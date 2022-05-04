@@ -72,11 +72,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="k5z-8R-qYb">
+                                <rect key="frame" x="197" y="440.5" width="20" height="20"/>
+                                <color key="color" name="CustomTint"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="etC-3S-Vk2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="k5z-8R-qYb" firstAttribute="centerY" secondItem="etC-3S-Vk2" secondAttribute="centerY" id="0R6-jA-w2r"/>
                             <constraint firstItem="HQS-3i-hye" firstAttribute="top" secondItem="etC-3S-Vk2" secondAttribute="top" id="3aj-iO-JpR"/>
+                            <constraint firstItem="k5z-8R-qYb" firstAttribute="centerX" secondItem="etC-3S-Vk2" secondAttribute="centerX" id="Jxm-5U-C0t"/>
                             <constraint firstItem="etC-3S-Vk2" firstAttribute="bottom" secondItem="HQS-3i-hye" secondAttribute="bottom" id="Kka-pJ-plC"/>
                             <constraint firstItem="HQS-3i-hye" firstAttribute="leading" secondItem="etC-3S-Vk2" secondAttribute="leading" id="pml-3S-aWz"/>
                             <constraint firstItem="etC-3S-Vk2" firstAttribute="trailing" secondItem="HQS-3i-hye" secondAttribute="trailing" id="yH9-xl-6XJ"/>
@@ -84,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Quests" largeTitleDisplayMode="always" id="ubv-cm-4et"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="k5z-8R-qYb" id="5Ba-Qw-tGQ"/>
                         <outlet property="questsTableView" destination="HQS-3i-hye" id="dEi-bK-w0S"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToQuestDetail" id="zl1-VA-pRG"/>
                     </connections>
@@ -374,6 +381,10 @@
                                     <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oc-IO-TZ2"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ix4-5h-JjT">
+                                <rect key="frame" x="197" y="677.5" width="20" height="20"/>
+                                <color key="color" name="CustomTint"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -386,6 +397,7 @@
                             <constraint firstItem="YHK-p3-eBn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Jta-q3-HDn"/>
                             <constraint firstItem="THB-mE-Q9B" firstAttribute="width" secondItem="U9r-yF-DYS" secondAttribute="width" id="L6y-8q-sls"/>
                             <constraint firstItem="9lv-Ua-AKE" firstAttribute="centerY" secondItem="U9r-yF-DYS" secondAttribute="centerY" id="MFm-gW-8SJ"/>
+                            <constraint firstItem="Ix4-5h-JjT" firstAttribute="centerY" secondItem="zvP-6P-s1J" secondAttribute="centerY" id="Ns3-0N-65E"/>
                             <constraint firstItem="THB-mE-Q9B" firstAttribute="centerX" secondItem="U9r-yF-DYS" secondAttribute="centerX" id="RVw-ZE-tJo"/>
                             <constraint firstItem="JrV-h3-Isf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMV-wb-sch"/>
                             <constraint firstItem="MuR-BA-RLx" firstAttribute="height" secondItem="U9r-yF-DYS" secondAttribute="height" id="WY5-Cu-MCA"/>
@@ -395,6 +407,7 @@
                             <constraint firstItem="JrV-h3-Isf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="csM-Ed-acK"/>
                             <constraint firstItem="MuR-BA-RLx" firstAttribute="centerY" secondItem="U9r-yF-DYS" secondAttribute="centerY" id="dHG-Db-wsV"/>
                             <constraint firstItem="MuR-BA-RLx" firstAttribute="width" secondItem="U9r-yF-DYS" secondAttribute="width" id="he6-aA-8mc"/>
+                            <constraint firstItem="Ix4-5h-JjT" firstAttribute="centerX" secondItem="zvP-6P-s1J" secondAttribute="centerX" id="rsc-eh-hSa"/>
                             <constraint firstItem="THB-mE-Q9B" firstAttribute="height" secondItem="U9r-yF-DYS" secondAttribute="height" id="xJJ-aT-Fb9"/>
                             <constraint firstItem="MuR-BA-RLx" firstAttribute="centerX" secondItem="U9r-yF-DYS" secondAttribute="centerX" id="yY0-Et-DS3"/>
                         </constraints>
@@ -408,6 +421,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activitySpinner" destination="Ix4-5h-JjT" id="ZWO-Jq-orv"/>
                         <outlet property="backImageView" destination="THB-mE-Q9B" id="K8P-Qn-3ea"/>
                         <outlet property="cameraButton" destination="JrV-h3-Isf" id="pUt-nA-J1Z"/>
                         <outlet property="capturedLabel" destination="56Q-dm-cEi" id="Gzp-qh-BWm"/>

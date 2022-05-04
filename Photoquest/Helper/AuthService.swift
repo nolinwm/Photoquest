@@ -29,7 +29,6 @@ struct AuthService {
             
             // Create firestore entry for user
             firestore.collection("users").document(result.user.uid).setData([
-                "id": result.user.uid,
                 "emailAddress": emailAddress
             ])
             
