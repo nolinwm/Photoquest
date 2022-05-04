@@ -74,42 +74,45 @@ struct PhotoModel {
     }
     
     func savePhoto(_ photo: Photo) {
-        firestore.collection("userPhotoData")
-            .whereField("photoId", isEqualTo: photo.id)
-            .whereField("userId", isEqualTo: AuthService.shared.signedInUid ?? "")
-            .getDocuments { snapshot, error in
-                guard let snapshot = snapshot, error == nil else {
-                    // TODO: Save photo error handling
-                    return
-                }
-                if snapshot.documents.count >= 1 {
-                    // Photo exists, update data
-                    let doc = snapshot.documents.first!
-                    doc.reference.updateData([
-                        "imageUrl": photo.imageUrl!,
-                        "capturedTimestamp": Timestamp(date: photo.capturedDate!),
-                    ])
-                    if let coordinate = photo.coordinate {
+        guard let image = photo.image else { return }
+        uploadImage(image) { imageUrl in
+            firestore.collection("userPhotoData")
+                .whereField("photoId", isEqualTo: photo.id)
+                .whereField("userId", isEqualTo: AuthService.shared.signedInUid ?? "")
+                .getDocuments { snapshot, error in
+                    guard let snapshot = snapshot, error == nil else {
+                        // TODO: Save photo error handling
+                        return
+                    }
+                    if snapshot.documents.count >= 1 {
+                        // Photo exists, update data
+                        let doc = snapshot.documents.first!
                         doc.reference.updateData([
-                            "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                            "imageUrl": imageUrl,
+                            "capturedTimestamp": Timestamp(date: photo.capturedDate!),
                         ])
-                    }
-                } else {
-                    // New photo, set data and update capturedPhotoCount
-                    let newDoc = firestore.collection("userPhotoData").document()
-                    newDoc.setData([
-                        "photoId": photo.id,
-                        "userId": AuthService.shared.signedInUid ?? "",
-                        "imageUrl": photo.imageUrl!,
-                        "capturedTimestamp": Timestamp(date: photo.capturedDate!),
-                    ])
-                    if let coordinate = photo.coordinate {
-                        newDoc.updateData([
-                            "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        if let coordinate = photo.coordinate {
+                            doc.reference.updateData([
+                                "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                            ])
+                        }
+                    } else {
+                        // New photo, set data and update capturedPhotoCount
+                        let newDoc = firestore.collection("userPhotoData").document()
+                        newDoc.setData([
+                            "photoId": photo.id,
+                            "userId": AuthService.shared.signedInUid ?? "",
+                            "imageUrl": imageUrl,
+                            "capturedTimestamp": Timestamp(date: photo.capturedDate!),
                         ])
+                        if let coordinate = photo.coordinate {
+                            newDoc.updateData([
+                                "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                            ])
+                        }
                     }
                 }
-            }
+        }
     }
     
     // Upload an image to firebase storage and call a completion handler with the download URL
