@@ -332,7 +332,7 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
             }
             photos[photoIndex].image = capturedImage
             photos[photoIndex].capturedDate = Date.now
-            photoModel.savePhoto(photos[photoIndex])
+            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
             tagPhotoLocation()
         }
     }
@@ -350,7 +350,7 @@ extension QuestDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             photos[photoIndexToTagLocation].coordinate = location.coordinate
-            photoModel.savePhoto(photos[photoIndex])
+            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
         }
     }
     

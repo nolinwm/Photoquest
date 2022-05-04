@@ -73,7 +73,7 @@ struct PhotoModel {
             }
     }
     
-    func savePhoto(_ photo: Photo) {
+    func savePhoto(_ photo: Photo, questId: String) {
         guard let image = photo.image else { return }
         uploadImage(image) { imageUrl in
             firestore.collection("userPhotoData")
@@ -110,6 +110,22 @@ struct PhotoModel {
                                 "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
                             ])
                         }
+                        
+                        // Update capturedPhotoCount
+                        firestore.collection("userCapturedPhotoCountData")
+                            .whereField("questId", isEqualTo: questId)
+                            .whereField("userId", isEqualTo: AuthService.shared.signedInUid ?? "")
+                            .getDocuments { snapshot, error in
+                                guard let snapshot = snapshot, snapshot.documents.count >= 1, error == nil else {
+                                    // TODO: Update capturedPhotoCount error handling
+                                    return
+                                }
+                                let doc = snapshot.documents.first!
+                                let capturedPhotoCount = doc["capturedPhotoCount"] as! Int
+                                doc.reference.updateData([
+                                    "capturedPhotoCount": capturedPhotoCount + 1
+                                ])
+                            }
                     }
                 }
         }
