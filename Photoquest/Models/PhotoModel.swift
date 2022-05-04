@@ -73,7 +73,7 @@ struct PhotoModel {
             }
     }
     
-    func savePhoto(_ photo: Photo, questId: String, isNewPhoto: @escaping(Bool) -> Void) {
+    func savePhoto(_ photo: Photo, questId: String, isNewPhoto: @escaping(Bool) -> Void = { isNewPhoto in }) {
         guard let image = photo.image else { return }
         uploadImage(image) { imageUrl in
             firestore.collection("userPhotoData")
@@ -105,6 +105,7 @@ struct PhotoModel {
                             "imageUrl": imageUrl,
                             "capturedTimestamp": Timestamp(date: photo.capturedDate!),
                         ])
+                        // TODO: Break off location saving into a separate photoModel method
                         if let coordinate = photo.coordinate {
                             newDoc.updateData([
                                 "geopoint": GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)

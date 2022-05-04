@@ -357,7 +357,7 @@ extension QuestDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             photos[photoIndexToTagLocation].coordinate = location.coordinate
-//            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
+            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
         }
     }
     
