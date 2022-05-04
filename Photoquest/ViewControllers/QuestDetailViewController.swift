@@ -118,6 +118,7 @@ class QuestDetailViewController: UIViewController, PhotoModelDelegate {
     
     func receivedPhotos(photos: [Photo]) {
         self.photos = photos
+        fetchImages()
         setupImagePicker()
         setupSwipeGestures()
         setupImageViews()
@@ -128,11 +129,22 @@ class QuestDetailViewController: UIViewController, PhotoModelDelegate {
 // MARK: - Animation Methods
 extension QuestDetailViewController {
     
+    func fetchImages() {
+        for index in 0..<photos.count {
+            guard let imageUrl = photos[index].imageUrl else { continue }
+            photoModel.fetchImage(for: imageUrl) { image in
+                self.photos[index].image = image
+                if index == self.photoIndex {
+                    self.frontImageView.image = image
+                }
+            }
+        }
+    }
+    
     func setupImageViews() {
         pageControl.numberOfPages = photos.count
         adjustPhotoIndex(to: photoIndex) // Ensures photoIndex is in bounds
         resetAnimationState()
-        frontImageView.image = photos[photoIndex].image ?? imagePlaceholder
         imageLabel.text = photos[photoIndex].name
         if let capturedDate = photos[photoIndex].capturedDate {
             capturedLabel.text = "Captured \(capturedDate.formatted(date: .long, time: .omitted))"
@@ -317,10 +329,10 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
         if imageWasAccepted, let capturedImage = capturedImage {
             DispatchQueue.main.async {
                 self.frontImageView.image = capturedImage
-                self.backImageView.image = self.frontImageView.image
             }
             photos[photoIndex].image = capturedImage
             photos[photoIndex].capturedDate = Date.now
+            photoModel.savePhoto(photos[photoIndex])
             tagPhotoLocation()
         }
     }
@@ -338,6 +350,7 @@ extension QuestDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             photos[photoIndexToTagLocation].coordinate = location.coordinate
+            photoModel.savePhoto(photos[photoIndex])
         }
     }
     
