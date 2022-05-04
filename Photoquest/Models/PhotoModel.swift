@@ -73,7 +73,7 @@ struct PhotoModel {
             }
     }
     
-    func savePhoto(_ photo: Photo, questId: String) {
+    func savePhoto(_ photo: Photo, questId: String, isNewPhoto: @escaping(Bool) -> Void) {
         guard let image = photo.image else { return }
         uploadImage(image) { imageUrl in
             firestore.collection("userPhotoData")
@@ -126,6 +126,8 @@ struct PhotoModel {
                                     "capturedPhotoCount": capturedPhotoCount + 1
                                 ])
                             }
+                        
+                        isNewPhoto(true)
                     }
                 }
         }

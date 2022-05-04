@@ -23,6 +23,8 @@ class QuestDetailViewController: UIViewController, PhotoModelDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
+    var questCell: QuestTableViewCell?
+    
     let imagePicker = UIImagePickerController()
     let imagePlaceholder = UIImage(named: "imagePlaceholder")
     var capturedImage: UIImage?
@@ -332,7 +334,11 @@ extension QuestDetailViewController: ImageRecognitionViewControllerDelegate {
             }
             photos[photoIndex].image = capturedImage
             photos[photoIndex].capturedDate = Date.now
-            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
+            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "") { isNewPhoto in
+                if isNewPhoto {
+                    self.questCell?.incrementPhotoCount()
+                }
+            }
             tagPhotoLocation()
         }
     }
@@ -350,7 +356,7 @@ extension QuestDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             photos[photoIndexToTagLocation].coordinate = location.coordinate
-            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
+//            photoModel.savePhoto(photos[photoIndex], questId: quest?.id ?? "")
         }
     }
     
