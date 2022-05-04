@@ -12,22 +12,45 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var quest: Quest?
+    var photos = [Photo]()
+    var initialPhotoIndex = 0
     var selectedAnnotation: MKAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         
-        guard let quest = quest else { return }
-        
-        for photo in quest.capturedPhotos {
+        for photo in photos {
             guard let coordinate = photo.coordinate else { continue }
             let annotation = MKPointAnnotation()
             annotation.title = photo.name
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
         }
+        
+        setupMapView()
+    }
+    
+    func setupMapView() {
+        var coordinate: CLLocationCoordinate2D?
+        
+        // Check if the photo that the map button was tapped on has coordinates, if not, use the first available photo's coordinates.
+        if photos[initialPhotoIndex].coordinate != nil {
+            coordinate = photos[initialPhotoIndex].coordinate
+        } else {
+            for photo in photos {
+                if photo.coordinate != nil {
+                    coordinate = photo.coordinate
+                    break
+                }
+            }
+        }
+        
+        // If no photos have coordinates, return so the map opens on it's default region.
+        guard let coordinate = coordinate else { return }
+        
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 75000, longitudinalMeters: 75000)
+        mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -51,8 +74,8 @@ class QuestMapViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? MapAnnotationViewController {
-            guard let quest = quest, let selectedAnnotation = selectedAnnotation else { return }
-            vc.photo = quest.capturedPhotos.first {
+            guard let selectedAnnotation = selectedAnnotation else { return }
+            vc.photo = photos.first {
                 $0.name == selectedAnnotation.title
             }
         }

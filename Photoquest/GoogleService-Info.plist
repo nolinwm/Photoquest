@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1024600587468-cg4opgasebe8n0pbj6pd6dbfs7k8ffrn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1024600587468-cg4opgasebe8n0pbj6pd6dbfs7k8ffrn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCSZgRErpzCdIc-pOswVeSfdL_zB_djB-g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1024600587468</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nolinmcfarland.Photoquest</string>
+	<key>PROJECT_ID</key>
+	<string>photoquest-5e686</string>
+	<key>STORAGE_BUCKET</key>
+	<string>photoquest-5e686.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1024600587468:ios:e0798b476446d9c1ded669</string>
+</dict>
+</plist>

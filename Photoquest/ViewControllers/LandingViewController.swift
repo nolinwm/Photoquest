@@ -13,8 +13,6 @@ class LandingViewController: UIViewController {
     }
     
     @IBAction func signInWithAppleTapped(_ sender: Any) {
-        let mainTabViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "rootTabViewController")
-        view.window?.rootViewController = mainTabViewController
-        view.window?.makeKeyAndVisible()
+        // ..
     }
 }

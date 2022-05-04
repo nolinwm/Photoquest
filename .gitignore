@@ -2,5 +2,6 @@
 .DS_Store
 
 ## Firebase
-*/GoogleService-Info.plist
+## Safe to include if read/write rules are configured
+##*/GoogleService-Info.plist
 

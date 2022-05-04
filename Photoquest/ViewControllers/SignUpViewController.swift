@@ -47,12 +47,20 @@ class SignUpViewController: UIViewController {
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         setActionLoading(true)
-        guard InputValidationService.validateEmail(email: emailTextField.text) else {
+        guard let emailText = emailTextField.text, InputValidationService.validateEmail(email: emailText) else {
             updateStatus(emailStatusIcon, emailErrorLabel, status: .error, error: "Email address is not valid.")
             setActionLoading(false)
             return
         }
-        presentPage(firstPage: false)
+        
+        AuthService.shared.accountExists(emailAddress: emailText) { exists in
+            if exists {
+                self.updateStatus(self.emailStatusIcon, self.emailErrorLabel, status: .error, error: "An account with this email address already exists.")
+                self.setActionLoading(false)
+            } else {
+                self.presentPage(firstPage: false)
+            }
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -71,7 +79,22 @@ class SignUpViewController: UIViewController {
             setActionLoading(false)
             return
         }
+        
+        let emailText = emailTextField.text!
+        let passwordText = passwordTextField.text!
+        AuthService.shared.createUser(emailAddress: emailText, password: passwordText) { error in
+            guard error == nil else {
+                self.setActionLoading(false)
+                self.updateStatus(self.confirmPasswordStatusIcon, self.confirmPasswordErrorLabel, status: .error, error: "Something went wrong. Please try again.")
+                return
+            }
+            self.signUpSuccessful()
+        }
+    }
+    
+    func signUpSuccessful() {
         performSegue(withIdentifier: "segueToOnboarding", sender: self)
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     @IBAction func showPasswordButtonTapped(_ sender: UIButton) {

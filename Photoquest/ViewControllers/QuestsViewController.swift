@@ -7,11 +7,13 @@
 
 import UIKit
 
-class QuestsViewController: UIViewController {
+class QuestsViewController: UIViewController, QuestModelDelegate {
 
     @IBOutlet weak var questsTableView: UITableView!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
-    var quests = TestData.quests
+    var questsModel = QuestModel()
+    var quests = [Quest]()
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -19,13 +21,32 @@ class QuestsViewController: UIViewController {
 
         questsTableView.delegate = self
         questsTableView.dataSource = self
+        
+        questsModel.delegate = self
+        questsModel.fetchQuests()
+        
+        activitySpinner.startAnimating()
+        questsTableView.alpha = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? QuestDetailViewController {
             if let selectedIndexPath = selectedIndexPath {
                 detailVC.quest = quests[selectedIndexPath.row]
+                detailVC.questCell = questsTableView.cellForRow(at: selectedIndexPath) as? QuestTableViewCell
             }
+        }
+    }
+    
+    func receivedQuests(quests: [Quest]) {
+        self.quests = quests
+        questsTableView.reloadData()
+        activitySpinner.stopAnimating()
+        
+        questsTableView.contentOffset.y = -50
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut) {
+            self.questsTableView.contentOffset.y = 0
+            self.questsTableView.alpha = 1
         }
     }
 }

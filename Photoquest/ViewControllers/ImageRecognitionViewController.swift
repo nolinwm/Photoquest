@@ -124,7 +124,7 @@ extension ImageRecognitionViewController: ImageRecognizerDelegate {
     }
     
     func imageRecognizerDidFinish(image: UIImage, identifiers: [String], confidence: Int) {
-        developerDisplayReturnedIdentifiers(identifiers)
+//        developerDisplayReturnedIdentifiers(identifiers)
         
         guard self.capturedImage == image, let photo = photo else {
             dismiss(animated: false)
