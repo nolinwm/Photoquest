@@ -104,13 +104,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C54F4142818694A001847F7 /* Helper */ = {
+		5C54F4142818694A001847F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
 				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
 			);
-			path = Helper;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5C56EA5E281C74C60069AE92 /* PhotoquestTests */ = {
@@ -155,7 +155,7 @@
 				5CC70F83281630AE0052733B /* Controllers */,
 				5C73CE2A2816E6DF002C096E /* Views */,
 				5CC70F812816309D0052733B /* Models */,
-				5C54F4142818694A001847F7 /* Helper */,
+				5C54F4142818694A001847F7 /* Resources */,
 				5CC70F662815D25E0052733B /* AppDelegate.swift */,
 				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
 				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
