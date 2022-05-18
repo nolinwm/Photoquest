@@ -124,6 +124,7 @@
 		5C73CE2A2816E6DF002C096E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5CC70F82281630A40052733B /* Storyboards */,
 				5C73CE2B2816E6F6002C096E /* QuestTableViewCell.swift */,
 				5CC9A0022816F3360011584E /* PhotoCollectionViewCell.swift */,
 			);
@@ -151,10 +152,9 @@
 		5CC70F652815D25E0052733B /* Photoquest */ = {
 			isa = PBXGroup;
 			children = (
-				5CC70F82281630A40052733B /* Storyboards */,
-				5CC70F83281630AE0052733B /* Controllers */,
-				5C73CE2A2816E6DF002C096E /* Views */,
 				5CC70F812816309D0052733B /* Models */,
+				5C73CE2A2816E6DF002C096E /* Views */,
+				5CC70F83281630AE0052733B /* Controllers */,
 				5C54F4142818694A001847F7 /* Resources */,
 				5CC70F662815D25E0052733B /* AppDelegate.swift */,
 				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
