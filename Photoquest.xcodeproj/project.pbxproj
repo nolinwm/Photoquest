@@ -155,7 +155,6 @@
 				5CC70F83281630AE0052733B /* Controllers */,
 				5C73CE2A2816E6DF002C096E /* Views */,
 				5CC70F812816309D0052733B /* Models */,
-				5CC70F86281634AF0052733B /* Data */,
 				5C54F4142818694A001847F7 /* Helper */,
 				5CC70F662815D25E0052733B /* AppDelegate.swift */,
 				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
@@ -170,6 +169,8 @@
 		5CC70F812816309D0052733B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9A00A2817334C0011584E /* Quest.swift */,
+				5CC9A00C2817336D0011584E /* Photo.swift */,
 				5C5DA0B228217F9200A5BB22 /* QuestModel.swift */,
 				5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */,
 				5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */,
@@ -201,15 +202,6 @@
 				5C73CE222816C401002C096E /* ProfileViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		5CC70F86281634AF0052733B /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				5CC9A00A2817334C0011584E /* Quest.swift */,
-				5CC9A00C2817336D0011584E /* Photo.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
