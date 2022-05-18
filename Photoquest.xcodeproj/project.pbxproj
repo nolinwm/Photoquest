@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				5CC70F82281630A40052733B /* Storyboards */,
-				5CC70F83281630AE0052733B /* ViewControllers */,
+				5CC70F83281630AE0052733B /* Controllers */,
 				5C73CE2A2816E6DF002C096E /* Views */,
 				5CC70F812816309D0052733B /* Models */,
 				5CC70F86281634AF0052733B /* Data */,
@@ -186,7 +186,7 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		5CC70F83281630AE0052733B /* ViewControllers */ = {
+		5CC70F83281630AE0052733B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5C73CE182816C370002C096E /* LandingViewController.swift */,
@@ -200,7 +200,7 @@
 				5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */,
 				5C73CE222816C401002C096E /* ProfileViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5CC70F86281634AF0052733B /* Data */ = {
