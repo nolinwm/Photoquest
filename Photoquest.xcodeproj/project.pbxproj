@@ -12,6 +12,8 @@
 		5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */; };
 		5C5DA0B328217F9200A5BB22 /* QuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B228217F9200A5BB22 /* QuestModel.swift */; };
 		5C5DA0B72821B03E00A5BB22 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */; };
+		5C69486328357E3B00A9776E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F682815D25E0052733B /* SceneDelegate.swift */; };
+		5C69486428357E3B00A9776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F662815D25E0052733B /* AppDelegate.swift */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
 		5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
@@ -107,8 +109,12 @@
 		5C54F4142818694A001847F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
-				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
+				5CC70F662815D25E0052733B /* AppDelegate.swift */,
+				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
+				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
+				5CC70F6F2815D2610052733B /* Assets.xcassets */,
+				5CC70F742815D2610052733B /* Info.plist */,
+				5CD49D0628215B54007B6974 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -119,6 +125,15 @@
 				5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */,
 			);
 			path = PhotoquestTests;
+			sourceTree = "<group>";
+		};
+		5C69486528357EFA00A9776E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
+				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5C73CE2A2816E6DF002C096E /* Views */ = {
@@ -155,13 +170,8 @@
 				5CC70F812816309D0052733B /* Models */,
 				5C73CE2A2816E6DF002C096E /* Views */,
 				5CC70F83281630AE0052733B /* Controllers */,
+				5C69486528357EFA00A9776E /* Services */,
 				5C54F4142818694A001847F7 /* Resources */,
-				5CC70F662815D25E0052733B /* AppDelegate.swift */,
-				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
-				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
-				5CC70F6F2815D2610052733B /* Assets.xcassets */,
-				5CC70F742815D2610052733B /* Info.plist */,
-				5CD49D0628215B54007B6974 /* GoogleService-Info.plist */,
 			);
 			path = Photoquest;
 			sourceTree = "<group>";
@@ -315,7 +325,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C69486428357E3B00A9776E /* AppDelegate.swift in Sources */,
 				5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */,
+				5C69486328357E3B00A9776E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
