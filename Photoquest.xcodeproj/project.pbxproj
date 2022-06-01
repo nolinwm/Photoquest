@@ -41,6 +41,8 @@
 		5C8A71942847AF0C008EE1A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
 		5C8A71952847AF0C008EE1A4 /* ImageRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */; };
 		5C8A71962847AF0C008EE1A4 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */; };
+		5C8A71972847BAC2008EE1A4 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
+		5C8A71982847BAC8008EE1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC70F6F2815D2610052733B /* Assets.xcassets */; };
 		5CC70F672815D25E0052733B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F662815D25E0052733B /* AppDelegate.swift */; };
 		5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F682815D25E0052733B /* SceneDelegate.swift */; };
 		5CC70F6B2815D25E0052733B /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F6A2815D25E0052733B /* QuestDetailViewController.swift */; };
@@ -322,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A71982847BAC8008EE1A4 /* Assets.xcassets in Resources */,
 				5CD49D0828215B54007B6974 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +369,7 @@
 				5C8A718D2847AF09008EE1A4 /* SignUpViewController.swift in Sources */,
 				5C8A71842847AEF6008EE1A4 /* AuthService.swift in Sources */,
 				5C8A71952847AF0C008EE1A4 /* ImageRecognizer.swift in Sources */,
+				5C8A71972847BAC2008EE1A4 /* SqueezeNet.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
