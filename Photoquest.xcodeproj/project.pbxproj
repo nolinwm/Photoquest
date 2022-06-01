@@ -12,6 +12,8 @@
 		5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */; };
 		5C5DA0B328217F9200A5BB22 /* QuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B228217F9200A5BB22 /* QuestModel.swift */; };
 		5C5DA0B72821B03E00A5BB22 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */; };
+		5C69486328357E3B00A9776E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F682815D25E0052733B /* SceneDelegate.swift */; };
+		5C69486428357E3B00A9776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F662815D25E0052733B /* AppDelegate.swift */; };
 		5C73CE192816C370002C096E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
 		5C73CE1B2816C38A002C096E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
 		5C73CE1D2816C398002C096E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
@@ -20,6 +22,27 @@
 		5C73CE232816C401002C096E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE222816C401002C096E /* ProfileViewController.swift */; };
 		5C73CE2C2816E6F6002C096E /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE2B2816E6F6002C096E /* QuestTableViewCell.swift */; };
 		5C7906C6281983FD00B2E450 /* InputValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7906C5281983FD00B2E450 /* InputValidationService.swift */; };
+		5C8A71842847AEF6008EE1A4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB6E7D28203CF300D39BE1 /* AuthService.swift */; };
+		5C8A71852847AEF9008EE1A4 /* InputValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7906C5281983FD00B2E450 /* InputValidationService.swift */; };
+		5C8A71862847AF03008EE1A4 /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE2B2816E6F6002C096E /* QuestTableViewCell.swift */; };
+		5C8A71872847AF03008EE1A4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A0022816F3360011584E /* PhotoCollectionViewCell.swift */; };
+		5C8A71882847AF09008EE1A4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1E2816C3AC002C096E /* OnboardingViewController.swift */; };
+		5C8A71892847AF09008EE1A4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE222816C401002C096E /* ProfileViewController.swift */; };
+		5C8A718A2847AF09008EE1A4 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE182816C370002C096E /* LandingViewController.swift */; };
+		5C8A718B2847AF09008EE1A4 /* ImageRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */; };
+		5C8A718C2847AF09008EE1A4 /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F6A2815D25E0052733B /* QuestDetailViewController.swift */; };
+		5C8A718D2847AF09008EE1A4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1C2816C398002C096E /* SignUpViewController.swift */; };
+		5C8A718E2847AF09008EE1A4 /* QuestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE202816C3E6002C096E /* QuestMapViewController.swift */; };
+		5C8A718F2847AF09008EE1A4 /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F842816338A0052733B /* QuestsViewController.swift */; };
+		5C8A71902847AF09008EE1A4 /* MapAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4671CD281C239100D9E89E /* MapAnnotationViewController.swift */; };
+		5C8A71912847AF09008EE1A4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73CE1A2816C38A002C096E /* SignInViewController.swift */; };
+		5C8A71922847AF0C008EE1A4 /* QuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B228217F9200A5BB22 /* QuestModel.swift */; };
+		5C8A71932847AF0C008EE1A4 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00A2817334C0011584E /* Quest.swift */; };
+		5C8A71942847AF0C008EE1A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9A00C2817336D0011584E /* Photo.swift */; };
+		5C8A71952847AF0C008EE1A4 /* ImageRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */; };
+		5C8A71962847AF0C008EE1A4 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */; };
+		5C8A71972847BAC2008EE1A4 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */; };
+		5C8A71982847BAC8008EE1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC70F6F2815D2610052733B /* Assets.xcassets */; };
 		5CC70F672815D25E0052733B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F662815D25E0052733B /* AppDelegate.swift */; };
 		5CC70F692815D25E0052733B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F682815D25E0052733B /* SceneDelegate.swift */; };
 		5CC70F6B2815D25E0052733B /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC70F6A2815D25E0052733B /* QuestDetailViewController.swift */; };
@@ -104,13 +127,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C54F4142818694A001847F7 /* Helper */ = {
+		5C54F4142818694A001847F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
-				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
+				5CC70F662815D25E0052733B /* AppDelegate.swift */,
+				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
+				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
+				5CC70F6F2815D2610052733B /* Assets.xcassets */,
+				5CD49D0628215B54007B6974 /* GoogleService-Info.plist */,
 			);
-			path = Helper;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5C56EA5E281C74C60069AE92 /* PhotoquestTests */ = {
@@ -119,6 +145,15 @@
 				5C56EA5F281C74C60069AE92 /* PhotoquestTests.swift */,
 			);
 			path = PhotoquestTests;
+			sourceTree = "<group>";
+		};
+		5C69486528357EFA00A9776E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5C7906C5281983FD00B2E450 /* InputValidationService.swift */,
+				5CFB6E7D28203CF300D39BE1 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5C73CE2A2816E6DF002C096E /* Views */ = {
@@ -151,18 +186,13 @@
 		5CC70F652815D25E0052733B /* Photoquest */ = {
 			isa = PBXGroup;
 			children = (
-				5CC70F82281630A40052733B /* Storyboards */,
-				5CC70F83281630AE0052733B /* ViewControllers */,
-				5C73CE2A2816E6DF002C096E /* Views */,
-				5CC70F812816309D0052733B /* Models */,
-				5CC70F86281634AF0052733B /* Data */,
-				5C54F4142818694A001847F7 /* Helper */,
-				5CC70F662815D25E0052733B /* AppDelegate.swift */,
-				5CC70F682815D25E0052733B /* SceneDelegate.swift */,
-				5C54F4172818731D001847F7 /* SqueezeNet.mlmodel */,
-				5CC70F6F2815D2610052733B /* Assets.xcassets */,
 				5CC70F742815D2610052733B /* Info.plist */,
-				5CD49D0628215B54007B6974 /* GoogleService-Info.plist */,
+				5CC70F82281630A40052733B /* Storyboards */,
+				5CC70F812816309D0052733B /* Models */,
+				5CC70F83281630AE0052733B /* Controllers */,
+				5C73CE2A2816E6DF002C096E /* Views */,
+				5C69486528357EFA00A9776E /* Services */,
+				5C54F4142818694A001847F7 /* Resources */,
 			);
 			path = Photoquest;
 			sourceTree = "<group>";
@@ -170,6 +200,8 @@
 		5CC70F812816309D0052733B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9A00A2817334C0011584E /* Quest.swift */,
+				5CC9A00C2817336D0011584E /* Photo.swift */,
 				5C5DA0B228217F9200A5BB22 /* QuestModel.swift */,
 				5CC70F7F28160BAC0052733B /* ImageRecognizer.swift */,
 				5C5DA0B62821B03E00A5BB22 /* PhotoModel.swift */,
@@ -186,7 +218,7 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		5CC70F83281630AE0052733B /* ViewControllers */ = {
+		5CC70F83281630AE0052733B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5C73CE182816C370002C096E /* LandingViewController.swift */,
@@ -200,16 +232,7 @@
 				5CC9A0042817270A0011584E /* ImageRecognitionViewController.swift */,
 				5C73CE222816C401002C096E /* ProfileViewController.swift */,
 			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		5CC70F86281634AF0052733B /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				5CC9A00A2817334C0011584E /* Quest.swift */,
-				5CC9A00C2817336D0011584E /* Photo.swift */,
-			);
-			path = Data;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A71982847BAC8008EE1A4 /* Assets.xcassets in Resources */,
 				5CD49D0828215B54007B6974 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +347,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A718E2847AF09008EE1A4 /* QuestMapViewController.swift in Sources */,
+				5C8A718B2847AF09008EE1A4 /* ImageRecognitionViewController.swift in Sources */,
+				5C8A71932847AF0C008EE1A4 /* Quest.swift in Sources */,
+				5C8A71922847AF0C008EE1A4 /* QuestModel.swift in Sources */,
+				5C8A71942847AF0C008EE1A4 /* Photo.swift in Sources */,
+				5C8A71852847AEF9008EE1A4 /* InputValidationService.swift in Sources */,
+				5C8A718C2847AF09008EE1A4 /* QuestDetailViewController.swift in Sources */,
+				5C69486428357E3B00A9776E /* AppDelegate.swift in Sources */,
+				5C8A71962847AF0C008EE1A4 /* PhotoModel.swift in Sources */,
+				5C8A71862847AF03008EE1A4 /* QuestTableViewCell.swift in Sources */,
+				5C8A71882847AF09008EE1A4 /* OnboardingViewController.swift in Sources */,
+				5C8A71912847AF09008EE1A4 /* SignInViewController.swift in Sources */,
 				5C56EA60281C74C60069AE92 /* PhotoquestTests.swift in Sources */,
+				5C8A71872847AF03008EE1A4 /* PhotoCollectionViewCell.swift in Sources */,
+				5C8A718F2847AF09008EE1A4 /* QuestsViewController.swift in Sources */,
+				5C8A71892847AF09008EE1A4 /* ProfileViewController.swift in Sources */,
+				5C69486328357E3B00A9776E /* SceneDelegate.swift in Sources */,
+				5C8A71902847AF09008EE1A4 /* MapAnnotationViewController.swift in Sources */,
+				5C8A718A2847AF09008EE1A4 /* LandingViewController.swift in Sources */,
+				5C8A718D2847AF09008EE1A4 /* SignUpViewController.swift in Sources */,
+				5C8A71842847AEF6008EE1A4 /* AuthService.swift in Sources */,
+				5C8A71952847AF0C008EE1A4 /* ImageRecognizer.swift in Sources */,
+				5C8A71972847BAC2008EE1A4 /* SqueezeNet.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
